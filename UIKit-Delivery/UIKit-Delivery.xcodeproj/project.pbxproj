@@ -35,6 +35,16 @@
 		00CDAE7228E182AF00502E85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE7128E182AF00502E85 /* User.swift */; };
 		00CDAE7428E1834700502E85 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE7328E1834700502E85 /* MenuOption.swift */; };
 		00CDAE7728E184ED00502E85 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE7628E184ED00502E85 /* Mocks.swift */; };
+		00DE1A1428E1B8740044E719 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1328E1B8740044E719 /* AddressView.swift */; };
+		00DE1A1628E1B8980044E719 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1528E1B8980044E719 /* SearchView.swift */; };
+		00DE1A1828E1B8B00044E719 /* PromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1728E1B8B00044E719 /* PromoView.swift */; };
+		00DE1A1A28E1B8DF0044E719 /* PromoBannersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */; };
+		00DE1A1C28E1B9200044E719 /* PromoActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */; };
+		00DE1A1E28E1B9380044E719 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1D28E1B9380044E719 /* CatalogView.swift */; };
+		00DE1A2428E238200044E719 /* PromoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2328E238200044E719 /* PromoViewCell.swift */; };
+		00DE1A2628E238490044E719 /* PromoBannerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2528E238490044E719 /* PromoBannerViewCell.swift */; };
+		00DE1A2828E238A00044E719 /* PromoActionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2728E238A00044E719 /* PromoActionsViewCell.swift */; };
+		00DE1A2A28E238BA0044E719 /* CatalogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2928E238BA0044E719 /* CatalogViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +78,16 @@
 		00CDAE7128E182AF00502E85 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00CDAE7328E1834700502E85 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		00CDAE7628E184ED00502E85 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		00DE1A1328E1B8740044E719 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		00DE1A1528E1B8980044E719 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		00DE1A1728E1B8B00044E719 /* PromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoView.swift; sourceTree = "<group>"; };
+		00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannersView.swift; sourceTree = "<group>"; };
+		00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoActionsView.swift; sourceTree = "<group>"; };
+		00DE1A1D28E1B9380044E719 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		00DE1A2328E238200044E719 /* PromoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoViewCell.swift; sourceTree = "<group>"; };
+		00DE1A2528E238490044E719 /* PromoBannerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannerViewCell.swift; sourceTree = "<group>"; };
+		00DE1A2728E238A00044E719 /* PromoActionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoActionsViewCell.swift; sourceTree = "<group>"; };
+		00DE1A2928E238BA0044E719 /* CatalogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,15 +152,15 @@
 		00CDAE3B28E0E86E00502E85 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
-				00CDAE3C28E0E86E00502E85 /* MainProtocols.swift */,
+				00CDAE4328E0E86E00502E85 /* Views */,
 				00CDAE3D28E0E86E00502E85 /* MainViewController.swift */,
 				00CDAE3E28E0E86E00502E85 /* MainInteractor.swift */,
 				00CDAE3F28E0E86E00502E85 /* MainPresenter.swift */,
+				00CDAE4628E0E86E00502E85 /* MainAssembly.swift */,
 				00CDAE4028E0E86E00502E85 /* MainRouter.swift */,
 				00CDAE4128E0E86E00502E85 /* MainWorker.swift */,
 				00CDAE4228E0E86E00502E85 /* MainModels.swift */,
-				00CDAE4328E0E86E00502E85 /* Views */,
-				00CDAE4628E0E86E00502E85 /* MainAssembly.swift */,
+				00CDAE3C28E0E86E00502E85 /* MainProtocols.swift */,
 			);
 			path = MainScene;
 			sourceTree = "<group>";
@@ -148,6 +168,7 @@
 		00CDAE4328E0E86E00502E85 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				00DE1A2028E232350044E719 /* Cells */,
 				00CDAE4428E0E86E00502E85 /* SupplementaryViews */,
 				00CDAE4528E0E86E00502E85 /* MainView.swift */,
 			);
@@ -157,6 +178,12 @@
 		00CDAE4428E0E86E00502E85 /* SupplementaryViews */ = {
 			isa = PBXGroup;
 			children = (
+				00DE1A1328E1B8740044E719 /* AddressView.swift */,
+				00DE1A1528E1B8980044E719 /* SearchView.swift */,
+				00DE1A1728E1B8B00044E719 /* PromoView.swift */,
+				00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */,
+				00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */,
+				00DE1A1D28E1B9380044E719 /* CatalogView.swift */,
 			);
 			path = SupplementaryViews;
 			sourceTree = "<group>";
@@ -207,6 +234,7 @@
 		00CDAE5828E0E86E00502E85 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00DE1A1F28E1BAB50044E719 /* Main */,
 				00CDAE7028E1829100502E85 /* Menu */,
 			);
 			path = Models;
@@ -227,6 +255,24 @@
 				00CDAE7628E184ED00502E85 /* Mocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		00DE1A1F28E1BAB50044E719 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		00DE1A2028E232350044E719 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				00DE1A2328E238200044E719 /* PromoViewCell.swift */,
+				00DE1A2528E238490044E719 /* PromoBannerViewCell.swift */,
+				00DE1A2728E238A00044E719 /* PromoActionsViewCell.swift */,
+				00DE1A2928E238BA0044E719 /* CatalogViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,24 +370,34 @@
 				00CDAE5928E0E86E00502E85 /* MainProtocols.swift in Sources */,
 				00CDAE6328E0E86E00502E85 /* MenuRouter.swift in Sources */,
 				00CDAE6928E0E86E00502E85 /* SeparatorView.swift in Sources */,
+				00DE1A2A28E238BA0044E719 /* CatalogViewCell.swift in Sources */,
+				00DE1A1628E1B8980044E719 /* SearchView.swift in Sources */,
 				00CDAE7228E182AF00502E85 /* User.swift in Sources */,
 				00CDAE6D28E0E86E00502E85 /* Styles.swift in Sources */,
+				00DE1A2428E238200044E719 /* PromoViewCell.swift in Sources */,
+				00DE1A1828E1B8B00044E719 /* PromoView.swift in Sources */,
+				00DE1A1E28E1B9380044E719 /* CatalogView.swift in Sources */,
 				00CDAE6428E0E86E00502E85 /* MenuWorker.swift in Sources */,
 				00CDAE5D28E0E86E00502E85 /* MainRouter.swift in Sources */,
 				00CDAE6528E0E86E00502E85 /* MenuModels.swift in Sources */,
 				00CDAE6828E0E86E00502E85 /* MenuInteractor.swift in Sources */,
 				00CDAE6B28E0E86E00502E85 /* MenuView.swift in Sources */,
 				00CDAE5F28E0E86E00502E85 /* MainModels.swift in Sources */,
+				00DE1A2628E238490044E719 /* PromoBannerViewCell.swift in Sources */,
 				00CDAE6728E0E86E00502E85 /* MenuProtocols.swift in Sources */,
 				00333A5228E0E59D000AD5DE /* AppDelegate.swift in Sources */,
 				00CDAE7428E1834700502E85 /* MenuOption.swift in Sources */,
 				00CDAE6628E0E86E00502E85 /* MenuPresenter.swift in Sources */,
 				00CDAE5E28E0E86E00502E85 /* MainWorker.swift in Sources */,
 				00333A5428E0E59D000AD5DE /* SceneDelegate.swift in Sources */,
+				00DE1A2828E238A00044E719 /* PromoActionsViewCell.swift in Sources */,
 				00CDAE6A28E0E86E00502E85 /* MenuCell.swift in Sources */,
 				00CDAE6028E0E86E00502E85 /* MainView.swift in Sources */,
+				00DE1A1A28E1B8DF0044E719 /* PromoBannersView.swift in Sources */,
 				00CDAE5A28E0E86E00502E85 /* MainViewController.swift in Sources */,
 				00CDAE5C28E0E86E00502E85 /* MainPresenter.swift in Sources */,
+				00DE1A1428E1B8740044E719 /* AddressView.swift in Sources */,
+				00DE1A1C28E1B9200044E719 /* PromoActionsView.swift in Sources */,
 				00CDAE6E28E0E86E00502E85 /* Extensions.swift in Sources */,
 				00CDAE6228E0E86E00502E85 /* MenuAssembly.swift in Sources */,
 				00CDAE6128E0E86E00502E85 /* MainAssembly.swift in Sources */,

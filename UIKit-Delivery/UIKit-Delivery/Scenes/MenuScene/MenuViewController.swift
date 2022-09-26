@@ -34,11 +34,9 @@ final class MenuViewController: UIViewController, MenuDisplayLogic {
 
 private extension MenuViewController {
     func setUp() {
-        self.view = menuView
+        view = menuView
     }
-}
 
-private extension MenuViewController {
     func showItems() {
         interactor.fetchMenu(MenuModels.Items.Request())
     }
