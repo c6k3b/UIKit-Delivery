@@ -5,6 +5,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     private let router: MainRoutingLogic
 
     private let mainView = MainView()
+
     private lazy var menuButton: UIButton = {
         $0.addTarget(self, action: #selector(didMenuButtonTapped), for: .touchUpInside)
         return $0
@@ -26,7 +27,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 private extension MainViewController {
     func setUp() {
         view = mainView
-//        addChild(CollectionViewController())
     }
 
     func showItems() {

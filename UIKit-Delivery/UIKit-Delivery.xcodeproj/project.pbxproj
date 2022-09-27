@@ -37,10 +37,6 @@
 		00CDAE7728E184ED00502E85 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE7628E184ED00502E85 /* Mocks.swift */; };
 		00DE1A1428E1B8740044E719 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1328E1B8740044E719 /* AddressView.swift */; };
 		00DE1A1628E1B8980044E719 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1528E1B8980044E719 /* SearchView.swift */; };
-		00DE1A1828E1B8B00044E719 /* PromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1728E1B8B00044E719 /* PromoView.swift */; };
-		00DE1A1A28E1B8DF0044E719 /* PromoBannersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */; };
-		00DE1A1C28E1B9200044E719 /* PromoActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */; };
-		00DE1A1E28E1B9380044E719 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A1D28E1B9380044E719 /* CatalogView.swift */; };
 		00DE1A2428E238200044E719 /* PromoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2328E238200044E719 /* PromoViewCell.swift */; };
 		00DE1A2628E238490044E719 /* PromoBannerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2528E238490044E719 /* PromoBannerViewCell.swift */; };
 		00DE1A2828E238A00044E719 /* PromoActionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE1A2728E238A00044E719 /* PromoActionsViewCell.swift */; };
@@ -80,10 +76,6 @@
 		00CDAE7628E184ED00502E85 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		00DE1A1328E1B8740044E719 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		00DE1A1528E1B8980044E719 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		00DE1A1728E1B8B00044E719 /* PromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoView.swift; sourceTree = "<group>"; };
-		00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannersView.swift; sourceTree = "<group>"; };
-		00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoActionsView.swift; sourceTree = "<group>"; };
-		00DE1A1D28E1B9380044E719 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		00DE1A2328E238200044E719 /* PromoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoViewCell.swift; sourceTree = "<group>"; };
 		00DE1A2528E238490044E719 /* PromoBannerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannerViewCell.swift; sourceTree = "<group>"; };
 		00DE1A2728E238A00044E719 /* PromoActionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoActionsViewCell.swift; sourceTree = "<group>"; };
@@ -180,10 +172,6 @@
 			children = (
 				00DE1A1328E1B8740044E719 /* AddressView.swift */,
 				00DE1A1528E1B8980044E719 /* SearchView.swift */,
-				00DE1A1728E1B8B00044E719 /* PromoView.swift */,
-				00DE1A1928E1B8DF0044E719 /* PromoBannersView.swift */,
-				00DE1A1B28E1B9200044E719 /* PromoActionsView.swift */,
-				00DE1A1D28E1B9380044E719 /* CatalogView.swift */,
 			);
 			path = SupplementaryViews;
 			sourceTree = "<group>";
@@ -375,8 +363,6 @@
 				00CDAE7228E182AF00502E85 /* User.swift in Sources */,
 				00CDAE6D28E0E86E00502E85 /* Styles.swift in Sources */,
 				00DE1A2428E238200044E719 /* PromoViewCell.swift in Sources */,
-				00DE1A1828E1B8B00044E719 /* PromoView.swift in Sources */,
-				00DE1A1E28E1B9380044E719 /* CatalogView.swift in Sources */,
 				00CDAE6428E0E86E00502E85 /* MenuWorker.swift in Sources */,
 				00CDAE5D28E0E86E00502E85 /* MainRouter.swift in Sources */,
 				00CDAE6528E0E86E00502E85 /* MenuModels.swift in Sources */,
@@ -393,11 +379,9 @@
 				00DE1A2828E238A00044E719 /* PromoActionsViewCell.swift in Sources */,
 				00CDAE6A28E0E86E00502E85 /* MenuCell.swift in Sources */,
 				00CDAE6028E0E86E00502E85 /* MainView.swift in Sources */,
-				00DE1A1A28E1B8DF0044E719 /* PromoBannersView.swift in Sources */,
 				00CDAE5A28E0E86E00502E85 /* MainViewController.swift in Sources */,
 				00CDAE5C28E0E86E00502E85 /* MainPresenter.swift in Sources */,
 				00DE1A1428E1B8740044E719 /* AddressView.swift in Sources */,
-				00DE1A1C28E1B9200044E719 /* PromoActionsView.swift in Sources */,
 				00CDAE6E28E0E86E00502E85 /* Extensions.swift in Sources */,
 				00CDAE6228E0E86E00502E85 /* MenuAssembly.swift in Sources */,
 				00CDAE6128E0E86E00502E85 /* MainAssembly.swift in Sources */,
