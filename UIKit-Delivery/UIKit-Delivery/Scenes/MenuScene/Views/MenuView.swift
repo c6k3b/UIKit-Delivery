@@ -94,7 +94,7 @@ private extension MenuView {
     func activateConstraints() {
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            stack.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            stack.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             stack.bottomAnchor.constraint(equalTo: footerButton.topAnchor, constant: -20),
             stack.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16)
         ])
