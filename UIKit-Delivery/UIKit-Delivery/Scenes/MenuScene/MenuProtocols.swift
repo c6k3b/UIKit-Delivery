@@ -1,16 +1,16 @@
 protocol MenuBusinessLogic: AnyObject {
-    func fetchMenu(_ request: MenuModels.Items.Request)
+    func fetchMenu(_ request: MenuModel.Item.Request)
 }
 
 protocol MenuWorkerLogic: AnyObject {
 }
 
 protocol MenuPresentationLogic: AnyObject {
-    func presentMenu(_ response: MenuModels.Items.Response)
+    func presentMenu(_ response: MenuModel.Item.Response)
 }
 
 protocol MenuDisplayLogic: AnyObject {
-    func displayMenu(_ viewModel: MenuModels.Items.ViewModel)
+    func displayMenu(_ viewModel: MenuModel.Item.ViewModel)
 }
 
 protocol MenuRoutingLogic: AnyObject {
@@ -27,9 +27,9 @@ protocol MenuRoutingLogic: AnyObject {
 }
 
 protocol MenuConfigurableCell: AnyObject {
-    func configure(with model: MenuModels.Items.ViewModel.MenuCell)
+    func configure(with model: MenuModel.Item.ViewModel.MenuCell)
 }
 
 protocol MenuConfigurableView: AnyObject {
-    func configure(with model: MenuModels.Items.ViewModel.UserInfo)
+    func configure(with model: MenuModel.Item.ViewModel.User)
 }

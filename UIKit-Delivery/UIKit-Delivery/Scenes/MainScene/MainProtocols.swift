@@ -11,4 +11,6 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 protocol MainRoutingLogic: AnyObject {
+    func routeToMenu()
+    func routeToSearch()
 }

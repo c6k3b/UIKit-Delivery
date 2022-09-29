@@ -16,7 +16,6 @@ class SearchCell: UICollectionViewCell {
     private let searchField: UISearchTextField = {
         $0.placeholder = "Поиск товаров"
         $0.backgroundColor = Styles.Colors.background
-        $0.leftView = UIImageView(image: Styles.Images.magnifying)
         return $0
     }(UISearchTextField())
 

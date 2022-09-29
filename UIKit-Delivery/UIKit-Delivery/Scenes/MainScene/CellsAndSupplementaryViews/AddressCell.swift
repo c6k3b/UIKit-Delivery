@@ -13,7 +13,7 @@ class AddressCell: UICollectionViewCell {
         return $0
     }(UIStackView())
 
-    private let menuButton: UIButton = {
+    let menuButton: UIButton = {
         $0.setImage(Styles.Images.menu, for: .normal)
         return $0
     }(UIButton())

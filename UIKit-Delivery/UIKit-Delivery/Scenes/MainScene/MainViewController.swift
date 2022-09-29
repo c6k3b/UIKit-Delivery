@@ -1,10 +1,14 @@
 import UIKit
 
 final class MainViewController: UIViewController, MainDisplayLogic {
+    // MARK: - Properties
     private let interactor: MainBusinessLogic
     private let router: MainRoutingLogic
 
-    enum SectionLayoutKind: Int, CaseIterable {
+    // MARK: - UI Elements
+    private static let sectionHeaderElementKind = "section-header-element-kind"
+
+    private enum SectionLayoutKind: Int, CaseIterable {
         case  address, search, promo, banner, action, catalogue
         var columnCount: Int {
             switch self {
@@ -15,8 +19,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         }
     }
 
-    static let sectionHeaderElementKind = "section-header-element-kind"
-
     private lazy var collectionView: UICollectionView = {
         $0.showsVerticalScrollIndicator = false
         $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -24,8 +26,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         return $0
     }(UICollectionView(frame: view.bounds, collectionViewLayout: createLayout()))
 
-    var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
-
+    // MARK: - Initializers && View Configurators
     init(interactor: MainBusinessLogic, router: MainRoutingLogic) {
         self.interactor = interactor
         self.router = router
@@ -37,8 +38,11 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 }
 
+// MARK: - Private Methods
 private extension MainViewController {
     func setUp() {
         view.addSubview(collectionView)
@@ -49,9 +53,15 @@ private extension MainViewController {
     }
 
     @objc func didMenuButtonTapped() {
+        router.routeToMenu()
+    }
+
+    @objc func didAddressButtonTapped() {
+        router.routeToSearch()
     }
 }
 
+// MARK: - Collection Layout
 private extension MainViewController {
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
@@ -120,9 +130,10 @@ private extension MainViewController {
     }
 }
 
+// MARK: - Data Source
 private extension MainViewController {
     func configureDataSource() {
-        // MARK: - Cells Registration
+        // Cells Registration
         let headerRegistration = UICollectionView.SupplementaryRegistration
         <TitleView>(elementKind: MainViewController.sectionHeaderElementKind) {
             (supplementaryView, _, _) in
@@ -130,8 +141,11 @@ private extension MainViewController {
         }
 
         let addressCellRegistration = UICollectionView.CellRegistration<AddressCell, Int> {
-            (cell, _, _) in
+            [unowned self]  (cell, _, _) in
+            cell.menuButton.addTarget(self, action: #selector(self.didMenuButtonTapped), for: .touchUpInside)
+
             cell.addressButton.setTitle("Пискунова, 24" + " ›", for: .normal)
+            cell.addressButton.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
         }
 
         let searchCellRegistration = UICollectionView.CellRegistration<SearchCell, Int> { (_, _, _) in }
@@ -160,7 +174,7 @@ private extension MainViewController {
             cell.label.text = "Value \(identifier)"
         }
 
-        // MARK: - Datasource
+        // Datasource
         dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, Int>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
             switch SectionLayoutKind(rawValue: indexPath.section)! {

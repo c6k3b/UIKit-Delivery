@@ -4,6 +4,9 @@ final class MenuInteractor: MenuBusinessLogic {
     private let presenter: MenuPresentationLogic
     private let worker: MenuWorkerLogic
 
+    typealias User = MenuModel.Item.Response.User
+    typealias MenuOption = MenuModel.Item.Response.MenuCell
+
     private var userInfo: User?
     private var menuOptions: [MenuOption]?
 
@@ -12,14 +15,14 @@ final class MenuInteractor: MenuBusinessLogic {
         self.worker = worker
     }
 
-    func fetchMenu(_ request: MenuModels.Items.Request) {
+    func fetchMenu(_ request: MenuModel.Item.Request) {
         let mocks = Mocks()
         userInfo = mocks.user
         menuOptions = mocks.menuOptions
 
         DispatchQueue.main.async { [weak self] in
-            let response = MenuModels.Items.Response(
-                menuOptions: self?.menuOptions ?? [],
+            let response = MenuModel.Item.Response(
+                menuCells: self?.menuOptions ?? [],
                 userInfo: self?.userInfo ?? User(image: "", name: "", phone: "")
             )
 

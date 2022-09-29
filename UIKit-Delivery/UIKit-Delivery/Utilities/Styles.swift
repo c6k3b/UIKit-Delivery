@@ -17,6 +17,7 @@ enum Styles {
             systemName: "list.bullet",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)
         )?.withTintColor(Colors.grey, renderingMode: .alwaysOriginal)
+        static let location = UIImage(systemName: "location")
         static let heart = UIImage(systemName: "heart.fill")
         static let magnifying = UIImage(systemName: "magnifyingglass")
         static let plus = UIImage(systemName: "plus")

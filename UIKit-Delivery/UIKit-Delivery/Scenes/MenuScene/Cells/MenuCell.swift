@@ -40,7 +40,7 @@ class MenuCell: UITableViewCell, MenuConfigurableCell {
         )
     }
 
-    func configure(with model: MenuModels.Items.ViewModel.MenuCell) {
+    func configure(with model: MenuModel.Item.ViewModel.MenuCell) {
         label.text = model.label
         subLabel.text = model.subLabel
     }
