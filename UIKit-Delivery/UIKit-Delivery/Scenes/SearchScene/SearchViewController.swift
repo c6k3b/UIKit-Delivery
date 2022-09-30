@@ -11,13 +11,15 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         SearchModel.Item.ViewModel.SearchViewCell(street: "ccc", city: "ccc")
     ]
 
+    private var searchResults: [SearchModel.Item.ViewModel.SearchViewCell] = []
+
     // MARK: - UI Elements
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 16
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = Styles.Colors.grey
-        $0.addArrangedSubview(searchField)
+//        $0.addArrangedSubview(searchField)
         $0.addArrangedSubview(SeparatorView())
         $0.addArrangedSubview(button)
         $0.addArrangedSubview(table)
@@ -33,7 +35,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     private lazy var searchController: UISearchController = {
         $0.searchResultsUpdater = self
         return $0
-    }(UISearchController())
+    }(UISearchController(searchResultsController: nil))
 
     private let button: UIButton = {
         $0.setTitle(" Текущее местоположение", for: .normal)
@@ -72,10 +74,18 @@ private extension SearchViewController {
         view.backgroundColor = Styles.Colors.background
         view.addSubview(stack)
         activateConstraints()
+        navigationItem.searchController = searchController
     }
 
     func showItems() {
         print(addressItems)
+    }
+
+    func updateSearchResults(for searchText: String) {
+        searchResults = addressItems.filter { address in
+            let match = address.city.range(of: searchText, options: .caseInsensitive)
+            return match != nil
+        }
     }
 }
 
@@ -102,9 +112,13 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Search
+// MARK: - Search Delegate
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            updateSearchResults(for: searchText)
+            table.reloadData()
+        }
     }
 }
 

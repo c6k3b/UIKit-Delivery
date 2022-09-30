@@ -152,25 +152,25 @@ private extension MainViewController {
 
         let promoCellRegistration = UICollectionView.CellRegistration<PromoCell, Int> {
             (cell, _, identifier) in
-            cell.imageView.image = Styles.Images.circle
+            cell.imageView.image = Styles.Images.user
             cell.label.text = "Option \(identifier)"
         }
 
         let bannerCellRegistration = UICollectionView.CellRegistration<BannerCell, Int> {
             (cell, _, identifier) in
-            cell.imageView.image = Styles.Images.circle
+            cell.imageView.image = Styles.Images.user
             cell.label.text = "Value \(identifier)"
         }
 
         let actionCellRegistration = UICollectionView.CellRegistration<ActionCell, Int> {
             (cell, _, identifier) in
-            cell.imageView.image = Styles.Images.circle
+            cell.imageView.image = Styles.Images.user
             cell.label.text = "Value \(identifier)"
         }
 
         let catalogueCellRegistration = UICollectionView.CellRegistration<CatalogueCell, Int> {
             (cell, _, identifier) in
-            cell.imageView.image = Styles.Images.circle
+            cell.imageView.image = Styles.Images.user
             cell.label.text = "Value \(identifier)"
         }
 

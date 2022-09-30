@@ -21,7 +21,7 @@ class SearchCell: UICollectionViewCell {
 
     private let button: UIButton = {
         $0.backgroundColor = Styles.Colors.lightGrey
-        $0.setImage(Styles.Images.heart, for: .normal)
+        $0.setImage(Styles.Images.favourites, for: .normal)
         $0.layer.cornerRadius = 17.5
         return $0
     }(UIButton())

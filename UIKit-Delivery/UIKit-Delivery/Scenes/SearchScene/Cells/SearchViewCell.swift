@@ -13,7 +13,7 @@ class SearchViewCell: UITableViewCell, SearchViewConfigurableCell {
     }(UIStackView())
 
     private let image: UIImageView = {
-        $0.image = Styles.Images.circle
+        $0.image = Styles.Images.user
         $0.contentMode = .scaleAspectFill
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
