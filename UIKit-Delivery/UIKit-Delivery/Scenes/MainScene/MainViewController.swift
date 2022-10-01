@@ -7,13 +7,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 
     // MARK: - UI Elements
     private static let sectionHeaderElementKind = "section-header-element-kind"
+    private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
     private enum SectionLayoutKind: Int, CaseIterable {
-        case  address, search, promo, banner, action, catalogue
+        case  address, search, option, banner, promotion, catalogue
         var columnCount: Int {
             switch self {
             case .address, .search: return 1
-            case .promo, .banner, .action: return 4
+            case .option, .banner, .promotion: return 4
             case .catalogue: return 3
             }
         }
@@ -21,8 +22,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 
     private lazy var collectionView: UICollectionView = {
         $0.showsVerticalScrollIndicator = false
-        $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        $0.backgroundColor = .systemBackground
+        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UICollectionView(frame: view.bounds, collectionViewLayout: createLayout()))
 
@@ -38,14 +38,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 }
 
 // MARK: - Private Methods
 private extension MainViewController {
     func setUp() {
+        view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
+        activateConstraints()
         configureDataSource()
     }
 
@@ -85,16 +85,16 @@ private extension MainViewController {
             var groupHeight = NSCollectionLayoutDimension.absolute(44)
             switch sectionLayoutKind {
             case .address, .search: groupHeight = .absolute(44)
-            case .promo: groupHeight = .fractionalWidth(0.2)
+            case .option: groupHeight = .fractionalWidth(0.2)
             case .banner: groupHeight = .fractionalWidth(0.25)
-            case .action: groupHeight = .fractionalWidth(0.4)
+            case .promotion: groupHeight = .fractionalWidth(0.4)
             case .catalogue: groupHeight = .fractionalWidth(0.35)
             }
 
             let groupSize = NSCollectionLayoutSize(
                 widthDimension: sectionLayoutKind == .banner
                     ? .estimated(1200)
-                    : sectionLayoutKind == .action
+                    : sectionLayoutKind == .promotion
                         ? .estimated(600)
                         : .fractionalWidth(1),
                 heightDimension: groupHeight
@@ -105,7 +105,7 @@ private extension MainViewController {
 
             // Sections
             let section = NSCollectionLayoutSection(group: group)
-            if sectionLayoutKind == .promo || sectionLayoutKind == .banner || sectionLayoutKind == .action {
+            if sectionLayoutKind == .option || sectionLayoutKind == .banner || sectionLayoutKind == .promotion {
                 section.orthogonalScrollingBehavior = .continuous
             }
             section.interGroupSpacing = 16
@@ -150,7 +150,7 @@ private extension MainViewController {
 
         let searchCellRegistration = UICollectionView.CellRegistration<SearchCell, Int> { (_, _, _) in }
 
-        let promoCellRegistration = UICollectionView.CellRegistration<PromoCell, Int> {
+        let optionCellRegistration = UICollectionView.CellRegistration<OptionCell, Int> {
             (cell, _, identifier) in
             cell.imageView.image = Styles.Images.user
             cell.label.text = "Option \(identifier)"
@@ -162,7 +162,7 @@ private extension MainViewController {
             cell.label.text = "Value \(identifier)"
         }
 
-        let actionCellRegistration = UICollectionView.CellRegistration<ActionCell, Int> {
+        let promotionCellRegistration = UICollectionView.CellRegistration<PromotionCell, Int> {
             (cell, _, identifier) in
             cell.imageView.image = Styles.Images.user
             cell.label.text = "Value \(identifier)"
@@ -186,17 +186,17 @@ private extension MainViewController {
                 return collectionView.dequeueConfiguredReusableCell(
                     using: searchCellRegistration, for: indexPath, item: identifier
                 )
-            case .promo:
+            case .option:
                 return collectionView.dequeueConfiguredReusableCell(
-                    using: promoCellRegistration, for: indexPath, item: identifier
+                    using: optionCellRegistration, for: indexPath, item: identifier
                 )
             case .banner:
                 return collectionView.dequeueConfiguredReusableCell(
                     using: bannerCellRegistration, for: indexPath, item: identifier
                 )
-            case .action:
+            case .promotion:
                 return collectionView.dequeueConfiguredReusableCell(
-                    using: actionCellRegistration, for: indexPath, item: identifier
+                    using: promotionCellRegistration, for: indexPath, item: identifier
                 )
             case .catalogue:
                 return collectionView.dequeueConfiguredReusableCell(
@@ -227,5 +227,17 @@ private extension MainViewController {
             snapshot.appendItems(Array(itemOffset ..< itemUpperbound))
         }
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+// MARK: - Constraints
+private extension MainViewController {
+    func activateConstraints() {
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+        ])
     }
 }

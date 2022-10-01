@@ -19,20 +19,14 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         $0.spacing = 16
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = Styles.Colors.grey
-//        $0.addArrangedSubview(searchField)
-        $0.addArrangedSubview(SeparatorView())
         $0.addArrangedSubview(button)
         $0.addArrangedSubview(table)
-        $0.setCustomSpacing(0, after: searchField)
         return $0
     }(UIStackView())
 
-    private let searchField: UISearchTextField = {
-        $0.placeholder = "Поиск адреса"
-        return $0
-    }(UISearchTextField())
-
     private lazy var searchController: UISearchController = {
+        $0.searchBar.placeholder = "Поиск адреса"
+        $0.searchBar.searchBarStyle = .prominent
         $0.searchResultsUpdater = self
         return $0
     }(UISearchController(searchResultsController: nil))
@@ -72,9 +66,10 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
 private extension SearchViewController {
     func setUp() {
         view.backgroundColor = Styles.Colors.background
+        view.addSubview(searchController.searchBar)
         view.addSubview(stack)
+        view.addSubview(table)
         activateConstraints()
-        navigationItem.searchController = searchController
     }
 
     func showItems() {
@@ -126,7 +121,7 @@ extension SearchViewController: UISearchResultsUpdating {
 private extension SearchViewController {
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             stack.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
             stack.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16)
         ])

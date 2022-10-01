@@ -14,12 +14,12 @@ class MenuCell: UITableViewCell, MenuConfigurableCell {
     }(UIStackView())
 
     private let label: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return $0
     }(UILabel())
 
     private let subLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = Styles.Colors.grey
         return $0
     }(UILabel())

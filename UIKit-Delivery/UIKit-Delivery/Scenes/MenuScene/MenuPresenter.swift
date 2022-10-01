@@ -16,10 +16,9 @@ final class MenuPresenter: MenuPresentationLogic {
         }
 
         presentedUserInfo = MenuModel.Item.ViewModel.User(
-            image: UIImage(systemName: response.userInfo.image ?? "")?
-                .withTintColor(Styles.Colors.grey, renderingMode: .alwaysOriginal),
-            name: response.userInfo.name,
-            phone: response.userInfo.phone
+            image: UIImage(named: response.userInfo.image ?? "") ?? UIImage(),
+            name: response.userInfo.name ?? "",
+            phone: response.userInfo.phone ?? ""
         )
 
         let viewModel = MenuModel.Item.ViewModel(

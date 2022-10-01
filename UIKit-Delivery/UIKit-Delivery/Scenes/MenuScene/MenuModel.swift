@@ -29,13 +29,13 @@ extension MenuModel.Item.Response {
 
 extension MenuModel.Item.ViewModel {
     struct MenuCell {
-        let label: String?
-        let subLabel: String?
+        let label: String
+        let subLabel: String
     }
 
     struct User {
-        let image: UIImage?
-        let name: String?
-        let phone: String?
+        let image: UIImage
+        let name: String
+        let phone: String
     }
 }

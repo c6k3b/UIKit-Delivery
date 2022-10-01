@@ -1,6 +1,6 @@
 import UIKit
 
-class ActionCell: UICollectionViewCell {
+class PromotionCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         $0.contentMode = .scaleAspectFit
         $0.frame = contentView.frame
@@ -22,7 +22,7 @@ class ActionCell: UICollectionViewCell {
     }
 }
 
-private extension ActionCell {
+private extension PromotionCell {
     func setUp() {
 //        contentView.backgroundColor = .gray
         contentView.addSubview(label)

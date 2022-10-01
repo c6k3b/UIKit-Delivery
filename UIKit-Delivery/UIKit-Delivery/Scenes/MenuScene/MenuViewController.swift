@@ -103,7 +103,6 @@ private extension MenuViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         view.addSubview(footerButton)
-        modalPresentationStyle = .popover
         activateConstraints()
         // Change to navigationController with willAppear hide nav
     }
@@ -115,7 +114,7 @@ private extension MenuViewController {
 
 // MARK: - Table Delegates
 extension MenuViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 64 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 56 }
 }
 
 extension MenuViewController: UITableViewDataSource {
@@ -139,15 +138,6 @@ extension MenuViewController: UITableViewDataSource {
 // MARK: - Constraints
 private extension MenuViewController {
     func activateConstraints() {
-//        if let superview = superview {
-//            NSLayoutConstraint.activate([
-//                topAnchor.constraint(equalTo: superview.topAnchor),
-//                leftAnchor.constraint(equalTo: superview.leftAnchor),
-//                bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-//                rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -24)
-//            ])
-//        }
-
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             stack.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),

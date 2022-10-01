@@ -1,6 +1,6 @@
 import UIKit
 
-class PromoCell: UICollectionViewCell {
+class OptionCell: UICollectionViewCell {
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
         $0.alignment = .center
@@ -32,7 +32,7 @@ class PromoCell: UICollectionViewCell {
     }
 }
 
-private extension PromoCell {
+private extension OptionCell {
     func setUp() {
 //        contentView.backgroundColor = .gray
         contentView.addSubview(stack)
@@ -40,7 +40,7 @@ private extension PromoCell {
     }
 }
 
-private extension PromoCell {
+private extension OptionCell {
     func activateConstraints() {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 70),
