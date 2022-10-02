@@ -1,12 +1,17 @@
 import UIKit
 
-class TitleView: UICollectionReusableView {
-    let label = UILabel()
-    static let reuseIdentifier = "title-supplementary-reuse-identifier"
+class CatalogueHeaderCell: UICollectionViewCell {
+    private let label: UILabel = {
+        $0.text = "Каталог"
+        $0.font = UIFont.preferredFont(forTextStyle: .title2)
+        $0.adjustsFontForContentSizeCategory = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UILabel())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setUp()
     }
 
     required init?(coder: NSCoder) {
@@ -14,11 +19,15 @@ class TitleView: UICollectionReusableView {
     }
 }
 
-extension TitleView {
-    func configure() {
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
+private extension CatalogueHeaderCell {
+    func setUp() {
+        contentView.addSubview(label)
+        activateConstraints()
+    }
+}
+
+private extension CatalogueHeaderCell {
+    func activateConstraints() {
         let inset = CGFloat(10)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
@@ -26,6 +35,5 @@ extension TitleView {
             label.topAnchor.constraint(equalTo: topAnchor, constant: inset),
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
         ])
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
     }
 }

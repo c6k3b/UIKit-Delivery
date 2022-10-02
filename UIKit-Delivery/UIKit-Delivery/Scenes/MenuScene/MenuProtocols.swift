@@ -26,10 +26,10 @@ protocol MenuRoutingLogic: AnyObject {
     func routeToContacts()
 }
 
-protocol MenuConfigurableCell: AnyObject {
-    func configure(with model: MenuModel.Item.ViewModel.MenuCell)
-}
-
 protocol MenuConfigurableView: AnyObject {
     func configure(with model: MenuModel.Item.ViewModel.User)
+}
+
+protocol MenuConfigurableCell: AnyObject {
+    func configure(with model: MenuModel.Item.ViewModel.MenuCell)
 }

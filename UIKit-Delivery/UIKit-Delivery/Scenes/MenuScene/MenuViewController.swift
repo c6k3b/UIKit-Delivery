@@ -86,7 +86,6 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
     func displayMenu(_ viewModel: MenuModel.Item.ViewModel) {
         menuOptions = viewModel.menuCells
         configure(with: viewModel.userInfo)
-        table.reloadData()
     }
 
     func configure(with model: MenuModel.Item.ViewModel.User) {
@@ -104,7 +103,6 @@ private extension MenuViewController {
         view.addSubview(stack)
         view.addSubview(footerButton)
         activateConstraints()
-        // Change to navigationController with willAppear hide nav
     }
 
     func showItems() {

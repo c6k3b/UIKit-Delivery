@@ -13,7 +13,7 @@ enum MainModel {
             let options: [Option]
             let banners: [Banner]
             let promotions: [Promotion]
-            let catalogue: [CatalogItem]
+            let catalogue: [CatalogueItem]
         }
     }
 }
@@ -43,6 +43,7 @@ extension MainModel.Item.Response {
     struct CatalogueItem {
         let image: String?
         let description: String?
+        let backgroundColor: Int?
     }
 }
 
@@ -62,14 +63,15 @@ extension MainModel.Item.ViewModel {
         let isNew: Bool
         let image: UIImage
         let description: String
-        let discount: Int
-        let weight: Int
-        let price: Int
-        let discountPrice: Int
+        let discount: String
+        let weight: String
+        let price: String
+        let discountPrice: String
     }
 
-    struct CatalogItem {
-        let image: String
+    struct CatalogueItem {
+        let image: UIImage
         let description: String
+        let backgroundColor: UIColor
     }
 }

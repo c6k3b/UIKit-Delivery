@@ -60,3 +60,10 @@ extension UITextView {
         scrollRangeToVisible(selectedRange)
     }
 }
+
+extension UILabel {
+    open override func draw(_ rect: CGRect) {
+        let inset = UIEdgeInsets(top: -2, left: 2, bottom: -2, right: 2)
+        super.draw(rect.inset(by: inset))
+    }
+}

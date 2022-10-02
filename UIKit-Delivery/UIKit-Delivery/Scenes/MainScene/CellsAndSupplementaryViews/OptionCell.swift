@@ -1,23 +1,25 @@
 import UIKit
 
-class OptionCell: UICollectionViewCell {
+class OptionCell: UICollectionViewCell, MainConfigurableOptionCell {
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
+        $0.spacing = 6
         $0.alignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addArrangedSubview(imageView)
-        $0.addArrangedSubview(label)
+        $0.addArrangedSubview(descriptionLabel)
         return $0
     }(UIStackView())
 
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         $0.contentMode = .scaleAspectFit
         return $0
     }(UIImageView())
 
-    let label: UILabel = {
-        $0.font = UIFont.preferredFont(forTextStyle: .caption1)
+    private let descriptionLabel: UILabel = {
+        $0.font = UIFont.preferredFont(forTextStyle: .caption2)
         $0.adjustsFontForContentSizeCategory = true
+        $0.textAlignment = .center
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
@@ -30,11 +32,15 @@ class OptionCell: UICollectionViewCell {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func configure(with model: MainModel.Item.ViewModel.Option) {
+        imageView.image = model.image
+        descriptionLabel.text = model.description
+    }
 }
 
 private extension OptionCell {
     func setUp() {
-//        contentView.backgroundColor = .gray
         contentView.addSubview(stack)
         activateConstraints()
     }
@@ -43,13 +49,12 @@ private extension OptionCell {
 private extension OptionCell {
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 70),
-            imageView.heightAnchor.constraint(equalToConstant: 70)
+            imageView.heightAnchor.constraint(equalToConstant: 60)
         ])
 
         NSLayoutConstraint.activate([
-            label.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 2),
-            label.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -2)
+            descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 2),
+            descriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -2)
         ])
     }
 }

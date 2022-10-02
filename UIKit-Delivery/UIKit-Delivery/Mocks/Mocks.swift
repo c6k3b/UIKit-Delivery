@@ -7,7 +7,7 @@ struct Mocks {
     typealias CatalogueItem = MainModel.Item.Response.CatalogueItem
 
     typealias User = MenuModel.Item.Response.User
-    typealias MenuOption = MenuModel.Item.Response.MenuCell
+    typealias MenuCell = MenuModel.Item.Response.MenuCell
 
     // Main
     let options = [
@@ -63,15 +63,15 @@ struct Mocks {
     ]
 
     let catalogue = [
-        CatalogueItem(image: "Наборы", description: "sets"),
-        CatalogueItem(image: "Пицца", description: "pizza"),
-        CatalogueItem(image: "Паста", description: "pasta"),
-        CatalogueItem(image: "Ризотто", description: "risotto"),
-        CatalogueItem(image: "Салаты", description: "salads"),
-        CatalogueItem(image: "Полуфабрикаты", description: "semifinished"),
-        CatalogueItem(image: "Десерты", description: "deserts"),
-        CatalogueItem(image: "Добавки к блюдам", description: "seasonings"),
-        CatalogueItem(image: "Напитки", description: "drinks")
+        CatalogueItem(image: "sets", description: "Наборы", backgroundColor: 0xffc1b6),
+        CatalogueItem(image: "pizza", description: "Пицца", backgroundColor: 0xffe1ad),
+        CatalogueItem(image: "pasta", description: "Паста", backgroundColor: 0xbab892),
+        CatalogueItem(image: "risotto", description: "Ризотто", backgroundColor: 0xc4d3ce),
+        CatalogueItem(image: "salads", description: "Салаты", backgroundColor: 0xb9c4c8),
+        CatalogueItem(image: "semifinished", description: "Полу фабрикаты", backgroundColor: 0xa3ae9d),
+        CatalogueItem(image: "deserts", description: "Десерты", backgroundColor: 0xffe6b6),
+        CatalogueItem(image: "seasonings", description: "Добавки к блюдам", backgroundColor: 0xd3c4c4),
+        CatalogueItem(image: "drinks", description: "Напитки", backgroundColor: 0xffd4ad)
     ]
 
     // Menu
@@ -81,15 +81,15 @@ struct Mocks {
         phone: "+7 912 011-11-33"
     )
 
-    let menuOptions = [
-        MenuOption(label: "Оплата", subLabel: "Карта *4567"),
-        MenuOption(label: "Мои адреса", subLabel: ""),
-        MenuOption(label: "Мои заказы", subLabel: ""),
-        MenuOption(label: "Избранное", subLabel: ""),
-        MenuOption(label: "Новости", subLabel: ""),
-        MenuOption(label: "Купоны", subLabel: ""),
-        MenuOption(label: "О нас", subLabel: ""),
-        MenuOption(label: "Пригласить друзей", subLabel: ""),
-        MenuOption(label: "Настройки", subLabel: "")
+    let menuCells = [
+        MenuCell(label: "Оплата", subLabel: "Карта *4567"),
+        MenuCell(label: "Мои адреса", subLabel: ""),
+        MenuCell(label: "Мои заказы", subLabel: ""),
+        MenuCell(label: "Избранное", subLabel: ""),
+        MenuCell(label: "Новости", subLabel: ""),
+        MenuCell(label: "Купоны", subLabel: ""),
+        MenuCell(label: "О нас", subLabel: ""),
+        MenuCell(label: "Пригласить друзей", subLabel: ""),
+        MenuCell(label: "Настройки", subLabel: "")
     ]
 }
