@@ -49,7 +49,8 @@ private extension OptionCell {
 private extension OptionCell {
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalToConstant: 60)
+            imageView.heightAnchor.constraint(equalToConstant: 70),
+            imageView.widthAnchor.constraint(equalToConstant: 70)
         ])
 
         NSLayoutConstraint.activate([
