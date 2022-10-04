@@ -5,7 +5,7 @@ enum SearchAssembly {
         let presenter = SearchPresenter()
         let worker = SearchWorker()
         let interactor = SearchInteractor(presenter: presenter, worker: worker)
-        let router = SearchRouter()
+        let router = SearchRouter(dataStore: interactor)
         let viewController = SearchViewController(interactor: interactor, router: router)
 
         presenter.viewController = viewController

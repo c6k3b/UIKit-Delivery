@@ -5,12 +5,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     private let interactor: SearchBusinessLogic
     private let router: SearchRoutingLogic
 
-    private var addressItems: [SearchModel.Item.ViewModel.SearchViewCell] = [
-        SearchModel.Item.ViewModel.SearchViewCell(street: "aaa", city: "aaa"),
-        SearchModel.Item.ViewModel.SearchViewCell(street: "bbb", city: "bbb"),
-        SearchModel.Item.ViewModel.SearchViewCell(street: "ccc", city: "ccc")
-    ]
-
+    private var addressItems: [SearchModel.Item.ViewModel.SearchViewCell] = []
     private var searchResults: [SearchModel.Item.ViewModel.SearchViewCell] = []
 
     // MARK: - UI Elements
@@ -60,6 +55,9 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func displayAddress(_ viewModel: SearchModel.Item.ViewModel) {
+    }
 }
 
 // MARK: - Private Methods
@@ -73,7 +71,8 @@ private extension SearchViewController {
     }
 
     func showItems() {
-        print(addressItems)
+        let worker = SearchWorker()
+        worker.get()
     }
 
     func updateSearchResults(for searchText: String) {

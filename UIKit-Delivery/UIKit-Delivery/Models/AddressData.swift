@@ -1,8 +1,13 @@
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let value, unrestrictedValue: String
+// MARK: - AddressData
+struct AddressData: Decodable {
+    let suggestions: [Suggestion]?
+}
+
+// MARK: - Suggestion
+struct Suggestion: Decodable {
+    let value, unrestrictedValue: String?
     let data: DataClass
 
     enum CodingKeys: String, CodingKey {
@@ -13,41 +18,32 @@ struct Welcome: Codable {
 }
 
 // MARK: - DataClass
-struct DataClass: Codable { // swiftlint:disable identifier_name
-    let postalCode, country, countryISOCode: String
-    let federalDistrict: JSONNull?
-    let regionFiasID, regionKladrID, regionISOCode, regionWithType: String
-    let regionType, regionTypeFull, region: String
-    let areaFiasID, areaKladrID, areaWithType, areaType: JSONNull?
-    let areaTypeFull, area: JSONNull?
-    let cityFiasID, cityKladrID, cityWithType, cityType: String
-    let cityTypeFull, city: String
-    let cityArea, cityDistrictFiasID, cityDistrictKladrID, cityDistrictWithType: JSONNull?
-    let cityDistrictType, cityDistrictTypeFull, cityDistrict, settlementFiasID: JSONNull?
-    let settlementKladrID, settlementWithType, settlementType, settlementTypeFull: JSONNull?
-    let settlement: JSONNull?
-    let streetFiasID, streetKladrID, streetWithType, streetType: String
-    let streetTypeFull, street: String
-    let steadFiasID, steadCadnum, steadType, steadTypeFull: JSONNull?
-    let stead: JSONNull?
-    let houseFiasID, houseKladrID, houseCadnum, houseType: String
-    let houseTypeFull, house: String
-    let blockType, blockTypeFull, block, entrance: JSONNull?
-    let floor, flatFiasID, flatCadnum, flatType: JSONNull?
-    let flatTypeFull, flat, flatArea, squareMeterPrice: JSONNull?
-    let flatPrice, postalBox: JSONNull?
-    let fiasID: String
-    let fiasCode: JSONNull?
-    let fiasLevel, fiasActualityState, kladrID, geonameID: String
-    let capitalMarker, okato, oktmo, taxOffice: String
-    let taxOfficeLegal: String
-    let timezone: JSONNull?
-    let geoLat, geoLon: String
-    let beltwayHit, beltwayDistance, metro, divisions: JSONNull?
-    let qcGeo: String
-    let qcComplete, qcHouse: JSONNull?
-    let historyValues: [String]
-    let unparsedParts, source, qc: JSONNull?
+struct DataClass: Decodable { // swiftlint:disable identifier_name
+    let postalCode: String?
+    let country, countryISOCode: String?
+    let federalDistrict: String?
+    let regionFiasID, regionKladrID, regionISOCode, regionWithType, regionType, regionTypeFull, region: String?
+    let areaFiasID, areaKladrID, areaWithType, areaType, areaTypeFull, area: String?
+    let cityFiasID, cityKladrID, cityWithType, cityType, cityTypeFull, city, cityArea: String?
+    let cityDistrictFiasID, cityDistrictKladrID, cityDistrictWithType: String?
+    let cityDistrictType, cityDistrictTypeFull, cityDistrict: String?
+    let settlementFiasID, settlementKladrID, settlementWithType, settlementType, settlementTypeFull, settlement: String?
+    let streetFiasID, streetKladrID, streetWithType, streetType, streetTypeFull, street: String?
+    let steadFiasID, steadCadnum, steadType, steadTypeFull, stead: String?
+    let houseFiasID, houseKladrID, houseCadnum, houseType, houseTypeFull, house: String?
+    let blockType, blockTypeFull, block, entrance: String?
+    let floor, flatFiasID, flatCadnum, flatType, flatTypeFull, flat, flatArea: String?
+    let squareMeterPrice, flatPrice: String?
+    let postalBox: String?
+    let fiasID, fiasCode, fiasLevel, fiasActualityState: String?
+    let kladrID, geonameID, capitalMarker: String?
+    let okato, oktmo, taxOffice, taxOfficeLegal: String?
+    let timezone, geoLat, geoLon: String?
+    let beltwayHit, beltwayDistance, metro, divisions: String?
+    let qcGeo: String?
+    let qcComplete, qcHouse: String?
+    let historyValues: [String]?
+    let unparsedParts, source, qc: String?
 
     enum CodingKeys: String, CodingKey {
         case postalCode = "postal_code"
@@ -137,33 +133,5 @@ struct DataClass: Codable { // swiftlint:disable identifier_name
         case historyValues = "history_values"
         case unparsedParts = "unparsed_parts"
         case source, qc
-    }
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-
-    public var hashValue: Int {
-        return 0
-    }
-
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(
-                codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"
-            ))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
     }
 }

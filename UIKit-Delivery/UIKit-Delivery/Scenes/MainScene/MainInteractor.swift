@@ -32,6 +32,9 @@ final class MainInteractor: MainBusinessLogic {
             self?.presenter.presentMain(response)
         }
     }
+
+    func storeAddress() {
+    }
 }
 
 private extension MainInteractor {
