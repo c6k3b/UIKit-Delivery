@@ -22,7 +22,7 @@
 		00C6C76028E598C70054DD28 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C75F28E598C70054DD28 /* SearchRouter.swift */; };
 		00C6C76228E598D60054DD28 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C76128E598D60054DD28 /* SearchWorker.swift */; };
 		00C6C76428E598E20054DD28 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C76328E598E20054DD28 /* SearchModel.swift */; };
-		00C6C76928E5A5E20054DD28 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C76828E5A5E20054DD28 /* SearchViewCell.swift */; };
+		00C6C76928E5A5E20054DD28 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C76828E5A5E20054DD28 /* AddressListCell.swift */; };
 		00C6C76B28E5ACDB0054DD28 /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C76A28E5ACDB0054DD28 /* AddressData.swift */; };
 		00CDAE5928E0E86E00502E85 /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE3C28E0E86E00502E85 /* MainProtocols.swift */; };
 		00CDAE5A28E0E86E00502E85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDAE3D28E0E86E00502E85 /* MainViewController.swift */; };
@@ -70,7 +70,7 @@
 		00C6C75F28E598C70054DD28 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		00C6C76128E598D60054DD28 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		00C6C76328E598E20054DD28 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		00C6C76828E5A5E20054DD28 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		00C6C76828E5A5E20054DD28 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
 		00C6C76A28E5ACDB0054DD28 /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
 		00CDAE3C28E0E86E00502E85 /* MainProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
 		00CDAE3D28E0E86E00502E85 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		00C6C75428E598600054DD28 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				00C6C76828E5A5E20054DD28 /* SearchViewCell.swift */,
+				00C6C76828E5A5E20054DD28 /* AddressListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 				00CDAE6A28E0E86E00502E85 /* MenuCell.swift in Sources */,
 				00D431D428E3A8410035CA28 /* AddressCell.swift in Sources */,
 				00C6C75E28E598B60054DD28 /* SearchAssembly.swift in Sources */,
-				00C6C76928E5A5E20054DD28 /* SearchViewCell.swift in Sources */,
+				00C6C76928E5A5E20054DD28 /* AddressListCell.swift in Sources */,
 				00CDAE5A28E0E86E00502E85 /* MainViewController.swift in Sources */,
 				00CDAE5C28E0E86E00502E85 /* MainPresenter.swift in Sources */,
 				00CDAE6E28E0E86E00502E85 /* Extensions.swift in Sources */,

@@ -1,8 +1,6 @@
 import UIKit
 
 class SearchCell: UICollectionViewCell {
-    static var identifier: String { String(describing: SearchCell.self) }
-
     private lazy var stack: UIStackView = {
         $0.axis = .horizontal
         $0.spacing = 12
@@ -20,9 +18,7 @@ class SearchCell: UICollectionViewCell {
     }(UISearchTextField())
 
     private let button: UIButton = {
-        $0.backgroundColor = Styles.Colors.lightGrey
         $0.setImage(Styles.Images.favourites, for: .normal)
-        $0.layer.cornerRadius = 17.5
         return $0
     }(UIButton())
 
@@ -51,14 +47,10 @@ private extension SearchCell {
     func activateConstraints() {
         let buttonWidth = 35.0
 
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: buttonWidth)
-        ])
-
         if let superview = superview {
             NSLayoutConstraint.activate([
                 searchField.widthAnchor.constraint(
-                    equalToConstant: superview.bounds.width - 32 - stack.spacing - buttonWidth
+                    equalToConstant: superview.bounds.width - 16 - stack.spacing - buttonWidth
                 )
             ])
         }

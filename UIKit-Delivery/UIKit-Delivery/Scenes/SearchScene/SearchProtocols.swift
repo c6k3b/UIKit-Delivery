@@ -3,16 +3,17 @@ protocol SearchDataPassing: AnyObject {
 }
 
 protocol SearchDataStore: AnyObject {
-    var address: Address? { get set }
+    var addressList: [Address] { get set }
+    var address: Address { get set }
 }
 
 protocol SearchBusinessLogic: AnyObject {
-    func requestAddress(_ request: SearchModel.Item.Request)
-    func setAddress(_ request: SearchModel.Item.Request)
+    func requestAddressList(query: String, request: SearchModel.Item.Request)
+    func setAddress(_ index: Int)
 }
 
 protocol SearchWorkerLogic: AnyObject {
-    func getAddresses(completion: ([Address]?) -> Void)
+    func getAddressList(query: String, completion: ([Address]) -> Void)
 }
 
 protocol SearchPresentationLogic: AnyObject {
@@ -28,5 +29,5 @@ protocol SearchRoutingLogic: AnyObject {
 }
 
 protocol SearchViewConfigurableCell: AnyObject {
-    func configure(with model: SearchModel.Item.ViewModel.SearchViewCell)
+    func configure(with model: SearchModel.Item.ViewModel.AddressListCell)
 }

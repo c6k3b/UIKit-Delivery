@@ -4,8 +4,8 @@ class MenuCell: UITableViewCell, MenuConfigurableCell {
     static var identifier: String { String(describing: MenuCell.self) }
 
     private lazy var stack: UIStackView = {
-        $0.alignment = .leading
         $0.axis = .vertical
+        $0.alignment = .leading
         $0.spacing = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addArrangedSubview(label)

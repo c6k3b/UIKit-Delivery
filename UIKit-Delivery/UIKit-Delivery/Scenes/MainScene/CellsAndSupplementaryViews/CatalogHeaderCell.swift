@@ -3,11 +3,21 @@ import UIKit
 class CatalogueHeaderCell: UICollectionViewCell {
     private let label: UILabel = {
         $0.text = "Каталог"
-        $0.font = UIFont.preferredFont(forTextStyle: .title2)
+        $0.font = UIFont.systemFont(ofSize: 25)
         $0.adjustsFontForContentSizeCategory = true
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
+
+    private let button: UIButton = {
+        $0.backgroundColor = Styles.Colors.cardBackground
+        $0.setTitle("Смотреть все ›", for: .normal)
+        $0.setTitleColor(Styles.Colors.black, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        $0.layer.cornerRadius = 15
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIButton())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,18 +32,18 @@ class CatalogueHeaderCell: UICollectionViewCell {
 private extension CatalogueHeaderCell {
     func setUp() {
         contentView.addSubview(label)
+        contentView.addSubview(button)
         activateConstraints()
     }
 }
 
 private extension CatalogueHeaderCell {
     func activateConstraints() {
-        let inset = CGFloat(10)
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
+            button.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            button.heightAnchor.constraint(equalToConstant: 30),
+            button.widthAnchor.constraint(equalToConstant: 110)
         ])
     }
 }

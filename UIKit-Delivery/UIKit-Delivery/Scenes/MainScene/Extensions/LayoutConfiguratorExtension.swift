@@ -25,25 +25,26 @@ extension MainViewController {
 
             // Item
             let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(2),
+                widthDimension: .fractionalWidth(1),
                 heightDimension: .fractionalHeight(1)
             )
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 3, bottom: 2, trailing: 3)
 
             // Group
-            var groupHeight = NSCollectionLayoutDimension.absolute(44)
+            var groupHeight = NSCollectionLayoutDimension.absolute(40)
             switch sectionLayoutKind {
-            case .address, .search, .catalogueHeader: groupHeight = .absolute(44)
-            case .option: groupHeight = .fractionalWidth(0.25)
-            case .banner: groupHeight = .fractionalWidth(0.32)
-            case .promotion: groupHeight = .fractionalWidth(0.6)
-            case .catalogue: groupHeight = .fractionalWidth(0.42)
+            case .address, .search: groupHeight = groupHeight
+            case .catalogueHeader: groupHeight = .estimated(35)
+            case .option: groupHeight = .estimated(100)
+            case .banner: groupHeight = .estimated(115)
+            case .promotion: groupHeight = .estimated(208)
+            case .catalogue: groupHeight = .estimated(145)
             }
 
             let groupSize = NSCollectionLayoutSize(
                 widthDimension: sectionLayoutKind == .banner
-                    ? .estimated(1300)
+                    ? .estimated(1250)
                     : sectionLayoutKind == .promotion
                         ? .estimated(490)
                         : sectionLayoutKind == .option
@@ -60,8 +61,8 @@ extension MainViewController {
             if sectionLayoutKind == .option || sectionLayoutKind == .banner || sectionLayoutKind == .promotion {
                 section.orthogonalScrollingBehavior = .continuous
             }
-            section.interGroupSpacing = 16
-            section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+            section.interGroupSpacing = 8
+            section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
 
             return section
         }

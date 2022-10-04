@@ -92,4 +92,35 @@ struct Mocks {
         MenuCell(label: "Пригласить друзей", subLabel: ""),
         MenuCell(label: "Настройки", subLabel: "")
     ]
+
+    // Search
+    let addressList = [
+        Address(
+            streetType: "ул",
+            street: "Ленина",
+            house: "113",
+            city: "Ижевск",
+            region: "Удмуртия",
+            regionType: "республика",
+            country: "Россия"
+        ),
+        Address(
+            streetType: "ул",
+            street: "Ленина",
+            house: "113",
+            city: "Ижевск",
+            region: "Удмуртия",
+            regionType: "республика",
+            country: "Россия"
+        ),
+        Address(
+            streetType: "ул",
+            street: "Ленина",
+            house: "113",
+            city: "Ижевск",
+            region: "Удмуртия",
+            regionType: "республика",
+            country: "Россия"
+        )
+    ]
 }

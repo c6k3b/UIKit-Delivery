@@ -3,12 +3,14 @@ import UIKit
 final class MainViewController: UIViewController, MainDisplayLogic {
     // MARK: - Properties
     private let interactor: MainBusinessLogic
-    private let router: MainRoutingLogic
+    let router: (MainRoutingLogic & MainDataPassing)
 
     private var options: [MainModel.Item.ViewModel.Option] = []
     private var banners: [MainModel.Item.ViewModel.Banner] = []
     private var promotions: [MainModel.Item.ViewModel.Promotion] = []
     private var catalogue: [MainModel.Item.ViewModel.CatalogueItem] = []
+
+    private var address: String = "Пискунова, 24"
 
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
@@ -20,7 +22,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     }(UICollectionView(frame: view.bounds, collectionViewLayout: createLayout()))
 
     // MARK: - Initializers && View Configurators
-    init(interactor: MainBusinessLogic, router: MainRoutingLogic) {
+    init(interactor: MainBusinessLogic, router: MainRoutingLogic & MainDataPassing) {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
@@ -69,7 +71,7 @@ private extension MainViewController {
             [unowned self]  (cell, _, _) in
             cell.menuButton.addTarget(self, action: #selector(self.didMenuButtonTapped), for: .touchUpInside)
 
-            cell.addressButton.setTitle("Пискунова, 24" + " ›", for: .normal)
+            cell.addressButton.setTitle(address + " ›", for: .normal)
             cell.addressButton.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
         }
 
