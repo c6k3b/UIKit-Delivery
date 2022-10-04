@@ -2,6 +2,8 @@ import UIKit
 
 // MARK: - Collection Layout
 extension MainViewController {
+    static let sectionHeaderElementKind = "section-header"
+
     enum SectionLayoutKind: Int, CaseIterable {
         case  address, search, option, banner, promotion, catalogueHeader, catalogue
         var columnCount: Int {
@@ -35,7 +37,7 @@ extension MainViewController {
             var groupHeight = NSCollectionLayoutDimension.absolute(40)
             switch sectionLayoutKind {
             case .address, .search: groupHeight = groupHeight
-            case .catalogueHeader: groupHeight = .estimated(35)
+            case .catalogueHeader: groupHeight = .estimated(30)
             case .option: groupHeight = .estimated(100)
             case .banner: groupHeight = .estimated(115)
             case .promotion: groupHeight = .estimated(208)
@@ -63,6 +65,20 @@ extension MainViewController {
             }
             section.interGroupSpacing = 8
             section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+
+            let headerSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(48)
+            )
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: MainViewController.sectionHeaderElementKind,
+                alignment: .top
+            )
+
+            if sectionLayoutKind == .promotion {
+                section.boundarySupplementaryItems = [sectionHeader]
+            }
 
             return section
         }

@@ -67,6 +67,11 @@ private extension MainViewController {
 // MARK: - Data Source
 private extension MainViewController {
     func configureDataSource() {
+        let headerRegistration = UICollectionView.SupplementaryRegistration
+        <TitleSupplementaryView>(elementKind: MainViewController.sectionHeaderElementKind) {
+            (_, _, _) in
+        }
+
         let addressCellRegistration = UICollectionView.CellRegistration<AddressCell, Int> {
             [unowned self]  (cell, _, _) in
             cell.menuButton.addTarget(self, action: #selector(self.didMenuButtonTapped), for: .touchUpInside)
@@ -128,12 +133,20 @@ private extension MainViewController {
             case .catalogueHeader:
                 return collectionView.dequeueConfiguredReusableCell(
                     using: catalogueHeaderCellRegistration, for: indexPath, item: identifier
-                    )
+                )
             case .catalogue:
                 return collectionView.dequeueConfiguredReusableCell(
                     using: catalogueCellRegistration, for: indexPath, item: identifier
                 )
             }
+        }
+
+        dataSource.supplementaryViewProvider = {
+            [unowned self] (_, _, indexPath) in
+                return self.collectionView.dequeueConfiguredReusableSupplementary(
+                    using: headerRegistration,
+                    for: indexPath
+                )
         }
 
         // Initial Data

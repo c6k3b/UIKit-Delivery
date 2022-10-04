@@ -1,8 +1,8 @@
 import UIKit
 
-class CatalogueHeaderCell: UICollectionViewCell {
+class TitleSupplementaryView: UICollectionReusableView {
     private let label: UILabel = {
-        $0.text = "Каталог"
+        $0.text = "Акции"
         $0.font = UIFont.systemFont(ofSize: 25)
         $0.adjustsFontForContentSizeCategory = true
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -29,19 +29,22 @@ class CatalogueHeaderCell: UICollectionViewCell {
     }
 }
 
-private extension CatalogueHeaderCell {
+private extension TitleSupplementaryView {
     func setUp() {
-        contentView.addSubview(label)
-        contentView.addSubview(button)
+        addSubview(label)
+        addSubview(button)
         activateConstraints()
     }
 }
 
-private extension CatalogueHeaderCell {
+private extension TitleSupplementaryView {
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            button.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: 16)
+        ])
+        NSLayoutConstraint.activate([
+            button.rightAnchor.constraint(equalTo: rightAnchor),
+            button.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 8),
             button.heightAnchor.constraint(equalToConstant: 30),
             button.widthAnchor.constraint(equalToConstant: 110)
         ])
