@@ -36,7 +36,8 @@ extension MainViewController {
             // Group
             var groupHeight = NSCollectionLayoutDimension.absolute(40)
             switch sectionLayoutKind {
-            case .address, .search: groupHeight = groupHeight
+            case .address: groupHeight = .absolute(0)
+            case .search: groupHeight = groupHeight
             case .catalogueHeader: groupHeight = .estimated(30)
             case .option: groupHeight = .estimated(100)
             case .banner: groupHeight = .estimated(115)

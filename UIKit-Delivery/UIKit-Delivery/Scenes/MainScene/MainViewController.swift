@@ -15,6 +15,38 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
     // MARK: - UI Elements
+    private lazy var navigationLeftBarButton: UIBarButtonItem = {
+        $0.image = Styles.Images.menu
+        $0.target = self
+        $0.action = #selector(didMenuButtonTapped)
+        return $0
+    }(UIBarButtonItem())
+
+    private lazy var deliveryStack: UIStackView = {
+        $0.axis = .vertical
+        $0.spacing = -4
+        $0.alignment = .leading
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.addArrangedSubview(label)
+        $0.addArrangedSubview(addressButton)
+        return $0
+    }(UIStackView())
+
+    private let label: UILabel = {
+        $0.text = "Доставка"
+        $0.textColor = Styles.Colors.grey
+        $0.font = UIFont.systemFont(ofSize: 14)
+        return $0
+    }(UILabel())
+
+    lazy var addressButton: UIButton = {
+        $0.setTitleColor(.label, for: .normal)
+        $0.setTitle(address + " ›", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
+        return $0
+    }(UIButton())
+
     private lazy var collectionView: UICollectionView = {
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +58,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
+        UINavigationBar.appearance().tintColor = Styles.Colors.grey
         setUp()
         showItems()
     }
@@ -46,6 +79,10 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 // MARK: - Private Methods
 private extension MainViewController {
     func setUp() {
+        navigationItem.leftBarButtonItem = navigationLeftBarButton
+        navigationItem.titleView = deliveryStack
+        navigationController?.isNavigationBarHidden = true
+
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         activateConstraints()

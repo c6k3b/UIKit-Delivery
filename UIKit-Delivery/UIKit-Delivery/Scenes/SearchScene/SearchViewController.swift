@@ -86,8 +86,9 @@ private extension SearchViewController {
     func setUp() {
         view.backgroundColor = Styles.Colors.background
 
-        view.addSubview(searchController.searchBar)
+//        view.addSubview(searchController.searchBar)
 //        table.tableHeaderView = searchController.searchBar
+        navigationItem.searchController = searchController
         view.addSubview(stack)
         activateConstraints()
     }
@@ -146,7 +147,7 @@ extension SearchViewController: UISearchResultsUpdating {
 private extension SearchViewController {
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             stack.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
             stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             stack.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16)

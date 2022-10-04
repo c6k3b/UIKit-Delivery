@@ -39,7 +39,7 @@ class AddressCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUp()
+//        setUp()
     }
 
     required init?(coder: NSCoder) {

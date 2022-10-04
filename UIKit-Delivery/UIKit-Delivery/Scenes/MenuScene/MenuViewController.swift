@@ -99,7 +99,7 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
 private extension MenuViewController {
     func setUp() {
         view.backgroundColor = Styles.Colors.background
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         view.addSubview(footerButton)
         activateConstraints()

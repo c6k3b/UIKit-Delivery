@@ -25,6 +25,6 @@ final class MainRouter: MainRoutingLogic, MainDataPassing {
 
 private extension MainRouter {
     func navigate(source: UIViewController, destination: UIViewController) {
-        source.show(destination, sender: self)
+        source.navigationController?.pushViewController(destination, animated: true)
     }
 }
