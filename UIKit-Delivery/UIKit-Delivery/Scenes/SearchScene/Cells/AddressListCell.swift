@@ -6,22 +6,25 @@ class SearchViewCell: UITableViewCell, SearchViewConfigurableCell {
     private lazy var stack: UIStackView = {
         $0.axis = .horizontal
         $0.spacing = 16
+        $0.alignment = .center
+        $0.distribution = .equalSpacing
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(addressStack)
         return $0
     }(UIStackView())
 
-    private let image: UIImageView = {
-        $0.image = Styles.Images.user
-        $0.contentMode = .scaleAspectFill
+    let image: UIImageView = {
+        $0.image = Styles.Images.pin
+        $0.contentMode = .scaleAspectFit
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView())
 
     private lazy var addressStack: UIStackView = {
         $0.axis = .vertical
-        $0.spacing = -8
+        $0.spacing = 0
+        $0.alignment = .leading
         $0.distribution = .fillEqually
         $0.addArrangedSubview(streetLabel)
         $0.addArrangedSubview(cityLabel)
@@ -29,12 +32,13 @@ class SearchViewCell: UITableViewCell, SearchViewConfigurableCell {
     }(UIStackView())
 
     private let streetLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return $0
     }(UILabel())
 
     private let cityLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        $0.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        $0.textColor = Styles.Colors.grey
         return $0
     }(UILabel())
 
@@ -47,7 +51,7 @@ class SearchViewCell: UITableViewCell, SearchViewConfigurableCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with model: SearchModel.Item.ViewModel.SearchViewCell) {
+    func configure(with model: SearchModel.Item.ViewModel.AddressListCell) {
         streetLabel.text = model.street
         cityLabel.text = model.city
     }
@@ -63,11 +67,15 @@ private extension SearchViewCell {
 
 private extension SearchViewCell {
     func activateConstraints() {
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stack.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stack.rightAnchor.constraint(equalTo: contentView.rightAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            stack.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+//            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            stack.rightAnchor.constraint(equalTo: contentView.rightAnchor)
+//        ])
+
+//        NSLayoutConstraint.activate([
+//
+//        ])
     }
 }

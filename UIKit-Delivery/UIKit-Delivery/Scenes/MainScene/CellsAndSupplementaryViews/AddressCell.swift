@@ -1,11 +1,9 @@
 import UIKit
 
 class AddressCell: UICollectionViewCell {
-    static var identifier: String { String(describing: AddressCell.self) }
-
     private lazy var stack: UIStackView = {
         $0.axis = .horizontal
-        $0.alignment = .leading
+        $0.alignment = .center
         $0.spacing = 24
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addArrangedSubview(menuButton)

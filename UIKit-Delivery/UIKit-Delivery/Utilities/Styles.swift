@@ -5,6 +5,7 @@ import UIKit
 enum Styles {
     enum Colors {
         static let background = UIColor.systemBackground
+        static let black = UIColor.label
         static let grey = UIColor.gray
         static let darkGrey = UIColor.darkGray
         static let lightGrey = UIColor.lightGray.withAlphaComponent(0.3)

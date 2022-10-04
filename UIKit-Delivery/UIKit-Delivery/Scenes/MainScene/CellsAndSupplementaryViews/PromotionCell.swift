@@ -74,7 +74,6 @@ class PromotionCell: UICollectionViewCell, MainConfigurablePromotionCell {
 
     private let discountBadgeButton: UIButton = {
         $0.backgroundColor = Styles.Colors.red
-        $0.tintColor = Styles.Colors.background
         $0.titleLabel?.font = UIFont.preferredFont(forTextStyle: .caption2, compatibleWith: .current)
         $0.layer.cornerRadius = 8
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +83,6 @@ class PromotionCell: UICollectionViewCell, MainConfigurablePromotionCell {
     private let newBadgeButton: UIButton = {
         $0.backgroundColor = Styles.Colors.orange
         $0.setTitle("Новинка", for: .normal)
-        $0.tintColor = Styles.Colors.background
         $0.titleLabel?.font = UIFont.preferredFont(forTextStyle: .caption2, compatibleWith: .current)
         $0.layer.cornerRadius = 8
         $0.translatesAutoresizingMaskIntoConstraints = false

@@ -1,8 +1,10 @@
 import Foundation
 
-final class MainInteractor: MainBusinessLogic {
+final class MainInteractor: MainBusinessLogic, MainDataStore {
     private let presenter: MainPresentationLogic
     private let worker: MainWorkerLogic
+
+    var address: Address = Address()
 
     typealias Option = MainModel.Item.Response.Option
     typealias Banner = MainModel.Item.Response.Banner

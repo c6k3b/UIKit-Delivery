@@ -1,3 +1,7 @@
+protocol MainDataPassing: AnyObject {
+    var dataStore: MainDataStore { get }
+}
+
 protocol MainDataStore: AnyObject {
     var address: Address { get set }
 }

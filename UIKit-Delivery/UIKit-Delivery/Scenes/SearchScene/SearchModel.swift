@@ -3,15 +3,17 @@ import UIKit
 enum SearchModel {
     enum Item {
         struct Request {}
-        struct Response {}
+        struct Response {
+            let addressList: [Address]
+        }
         struct ViewModel {
-            let addressItems: [SearchViewCell]
+            let addressList: [AddressListCell]
         }
     }
 }
 
 extension SearchModel.Item.ViewModel {
-    struct SearchViewCell {
+    struct AddressListCell {
         let street: String
         let city: String
     }

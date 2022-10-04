@@ -21,8 +21,7 @@ class CatalogueCell: UICollectionViewCell, MainConfigurableCatalogueItemCell {
         $0.numberOfLines = 0
         $0.lineBreakMode = .byWordWrapping
         $0.textAlignment = .center
-        $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        $0.adjustsFontForContentSizeCategory = true
+        $0.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return $0
     }(UILabel())
 
@@ -55,7 +54,7 @@ private extension CatalogueCell {
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             stack.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 4),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stack.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -4)
         ])
 

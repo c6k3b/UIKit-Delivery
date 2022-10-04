@@ -1,7 +1,12 @@
 import UIKit
 
-final class MainRouter: MainRoutingLogic {
+final class MainRouter: MainRoutingLogic, MainDataPassing {
     weak var viewController: UIViewController?
+    var dataStore: MainDataStore
+
+    init(dataStore: MainDataStore) {
+        self.dataStore = dataStore
+    }
 
     func routeToMenu() {
         let destinationVC = MenuAssembly.build()
