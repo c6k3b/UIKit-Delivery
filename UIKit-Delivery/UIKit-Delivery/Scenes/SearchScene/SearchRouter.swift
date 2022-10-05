@@ -9,10 +9,11 @@ final class SearchRouter: SearchRoutingLogic, SearchDataPassing {
     }
 
     func routeToMain() {
-        let destinationVC = MainAssembly.build() as? MainViewController
-        if let destinationVC = destinationVC {
-            var destinationDS = destinationVC.router.dataStore
-            passData(source: dataStore, destination: &destinationDS)
+        if let navigationController = viewController?.navigationController {
+            let index = navigationController.viewControllers.count - 2
+            let destinationVC = navigationController.viewControllers[index] as? MainViewController
+            var destinationDS = destinationVC?.router.dataStore
+            passData(source: dataStore, destination: &destinationDS!)
             navigate()
         }
     }
@@ -20,7 +21,7 @@ final class SearchRouter: SearchRoutingLogic, SearchDataPassing {
 
 private extension SearchRouter {
     func navigate() {
-        viewController?.dismiss(animated: true)
+        viewController?.navigationController?.popViewController(animated: true)
     }
 
     func passData(source: SearchDataStore, destination: inout MainDataStore) {

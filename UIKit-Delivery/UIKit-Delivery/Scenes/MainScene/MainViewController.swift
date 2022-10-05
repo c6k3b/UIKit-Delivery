@@ -81,7 +81,6 @@ private extension MainViewController {
     func setUp() {
         navigationItem.leftBarButtonItem = navigationLeftBarButton
         navigationItem.titleView = deliveryStack
-        navigationController?.isNavigationBarHidden = true
 
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
