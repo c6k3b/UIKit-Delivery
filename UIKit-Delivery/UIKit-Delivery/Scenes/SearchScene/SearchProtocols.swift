@@ -13,7 +13,7 @@ protocol SearchBusinessLogic: AnyObject {
 }
 
 protocol SearchWorkerLogic: AnyObject {
-    func getAddressList(query: String, completion: ([Address]) -> Void)
+    func getAddressList(query: String, completion: @escaping ([Address]) -> Void)
 }
 
 protocol SearchPresentationLogic: AnyObject {

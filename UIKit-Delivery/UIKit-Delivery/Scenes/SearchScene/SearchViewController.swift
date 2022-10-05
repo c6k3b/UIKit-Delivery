@@ -68,7 +68,6 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
-        setUp()
         showItems()
     }
 
@@ -78,18 +77,15 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
 
     func displayAddress(_ viewModel: SearchModel.Item.ViewModel) {
         addressList = viewModel.addressList
+        setUp()
     }
 }
 
 // MARK: - Private Methods
 private extension SearchViewController {
     func setUp() {
-        view.backgroundColor = Styles.Colors.background
-
-//        view.addSubview(searchController.searchBar)
-//        table.tableHeaderView = searchController.searchBar
         navigationItem.searchController = searchController
-//        table.tableHeaderView = searchController.searchBar
+        view.backgroundColor = Styles.Colors.background
         view.addSubview(stack)
         activateConstraints()
     }

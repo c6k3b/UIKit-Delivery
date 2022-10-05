@@ -11,6 +11,9 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     private var catalogue: [MainModel.Item.ViewModel.CatalogueItem] = []
 
     private var address: String = "Пискунова, 24"
+    private var searchResults: [AddressCell] = []
+
+    lazy var optionsCount = options.count
 
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
@@ -52,6 +55,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         return $0
     }(UIButton())
 
+    private lazy var searchController: UISearchController = {
+        $0.searchBar.placeholder = "Поиск товаров"
+        $0.hidesNavigationBarDuringPresentation = false
+        $0.searchBar.sizeToFit()
+        $0.searchResultsUpdater = self
+        return $0
+    }(UISearchController(searchResultsController: nil))
+
     private lazy var collectionView: UICollectionView = {
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -71,17 +82,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setUp()
-    }
-
     func displayMain(_ viewModel: MainModel.Item.ViewModel) {
         options = viewModel.options
         banners = viewModel.banners
         promotions = viewModel.promotions
         catalogue = viewModel.catalogue
+
         configureDataSource()
+        setUp()
     }
 }
 
@@ -90,6 +98,7 @@ private extension MainViewController {
     func setUp() {
         navigationItem.leftBarButtonItem = navigationLeftBarButton
         navigationItem.titleView = titleView
+//        navigationItem.searchController = searchController
 
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
@@ -212,6 +221,12 @@ private extension MainViewController {
             snapshot.appendItems(Array(itemOffset ..< itemUpperbound))
         }
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+// MARK: - Search Delegate
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
     }
 }
 

@@ -6,6 +6,7 @@ extension MainViewController {
 
     enum SectionLayoutKind: Int, CaseIterable {
         case  address, search, option, banner, promotion, catalogueHeader, catalogue
+
         var columnCount: Int {
             switch self {
             case .address, .search, .catalogueHeader: return 1
@@ -23,7 +24,7 @@ extension MainViewController {
             guard let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
 
             // Columns
-            let columns = sectionLayoutKind.columnCount
+            var columns = sectionLayoutKind.columnCount
 
             // Item
             let itemSize = NSCollectionLayoutSize(
