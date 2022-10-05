@@ -89,6 +89,7 @@ private extension SearchViewController {
 //        view.addSubview(searchController.searchBar)
 //        table.tableHeaderView = searchController.searchBar
         navigationItem.searchController = searchController
+//        table.tableHeaderView = searchController.searchBar
         view.addSubview(stack)
         activateConstraints()
     }

@@ -22,6 +22,11 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         return $0
     }(UIBarButtonItem())
 
+    private lazy var titleView: UIView = {
+        $0.addSubview(deliveryStack)
+        return $0
+    }(UIView())
+
     private lazy var deliveryStack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = -4
@@ -59,12 +64,16 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         self.router = router
         super.init(nibName: nil, bundle: nil)
         UINavigationBar.appearance().tintColor = Styles.Colors.grey
-        setUp()
         showItems()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setUp()
     }
 
     func displayMain(_ viewModel: MainModel.Item.ViewModel) {
@@ -80,7 +89,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 private extension MainViewController {
     func setUp() {
         navigationItem.leftBarButtonItem = navigationLeftBarButton
-        navigationItem.titleView = deliveryStack
+        navigationItem.titleView = titleView
 
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
