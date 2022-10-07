@@ -61,21 +61,5 @@ private extension SearchViewCell {
     func setUp() {
         contentView.addSubview(stack)
         selectionStyle = .none
-        activateConstraints()
-    }
-}
-
-private extension SearchViewCell {
-    func activateConstraints() {
-//        NSLayoutConstraint.activate([
-//            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            stack.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-//            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            stack.rightAnchor.constraint(equalTo: contentView.rightAnchor)
-//        ])
-
-//        NSLayoutConstraint.activate([
-//
-//        ])
     }
 }

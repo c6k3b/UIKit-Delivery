@@ -68,6 +68,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
+        setUp()
         showItems()
     }
 
@@ -77,7 +78,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
 
     func displayAddress(_ viewModel: SearchModel.Item.ViewModel) {
         addressList = viewModel.addressList
-        setUp()
+        table.reloadData()
     }
 }
 

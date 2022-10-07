@@ -18,12 +18,12 @@ final class MenuInteractor: MenuBusinessLogic {
     func fetchMenu(_ request: MenuModel.Item.Request) {
         setMockData()
 
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             let response = MenuModel.Item.Response(
-                menuCells: self?.menuOptions ?? [],
-                userInfo: self?.userInfo ?? User(image: "", name: "", phone: "")
+                menuCells: self.menuOptions ?? [],
+                userInfo: self.userInfo ?? User(image: "", name: "", phone: "")
             )
-            self?.presenter.presentMenu(response)
+            self.presenter.presentMenu(response)
         }
     }
 }

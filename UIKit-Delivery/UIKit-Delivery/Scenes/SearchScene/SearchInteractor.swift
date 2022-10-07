@@ -13,19 +13,20 @@ final class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     }
 
     func requestAddressList(query: String, request: SearchModel.Item.Request) {
-        self.worker.getAddressList(query: query) {
-            self.addressList = $0
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.worker.getAddressList(query: query) {
+                self?.addressList = $0
 
-            DispatchQueue.main.async { [weak self] in
-                let response = SearchModel.Item.Response(addressList: self?.addressList ?? [])
-                self?.presenter.presentAddress(response)
-                print(response)
+                DispatchQueue.main.async {
+                    let response = SearchModel.Item.Response(addressList: self?.addressList ?? [] )
+                    self?.presenter.presentAddress(response)
+                }
             }
         }
     }
 
     func setAddress(_ index: Int) {
-        self.address = addressList[index]
+        address = addressList[index]
     }
 }
 

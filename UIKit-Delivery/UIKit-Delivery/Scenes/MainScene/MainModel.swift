@@ -8,12 +8,14 @@ enum MainModel {
             let banners: [Banner]
             let promotions: [Promotion]
             let catalogue: [CatalogueItem]
+            let deliveryAddress: Address
         }
         struct ViewModel {
             let options: [Option]
             let banners: [Banner]
             let promotions: [Promotion]
             let catalogue: [CatalogueItem]
+            let deliveryAddress: String
         }
     }
 }

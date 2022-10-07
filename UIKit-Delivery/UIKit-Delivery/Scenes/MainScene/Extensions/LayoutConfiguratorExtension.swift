@@ -24,7 +24,7 @@ extension MainViewController {
             guard let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
 
             // Columns
-            var columns = sectionLayoutKind.columnCount
+            let columns = sectionLayoutKind.columnCount
 
             // Item
             let itemSize = NSCollectionLayoutSize(

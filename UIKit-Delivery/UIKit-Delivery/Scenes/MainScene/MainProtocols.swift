@@ -8,7 +8,6 @@ protocol MainDataStore: AnyObject {
 
 protocol MainBusinessLogic: AnyObject {
     func fetchMain(_ request: MainModel.Item.Request)
-    func storeAddress()
 }
 
 protocol MainWorkerLogic: AnyObject {

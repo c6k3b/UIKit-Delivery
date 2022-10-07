@@ -20,7 +20,6 @@ class PromotionCell: UICollectionViewCell, MainConfigurablePromotionCell {
 
     private lazy var descriptionStack: UIStackView = {
         $0.axis = .vertical
-
         $0.addArrangedSubview(descriptionLabel)
         $0.addArrangedSubview(weightLabel)
         return $0

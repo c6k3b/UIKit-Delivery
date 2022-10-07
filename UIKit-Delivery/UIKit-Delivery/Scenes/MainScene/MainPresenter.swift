@@ -53,11 +53,16 @@ final class MainPresenter: MainPresentationLogic {
             catalogue.append(presentedItem)
         }
 
+        let presentedDeliveryAddress =
+            "\(response.deliveryAddress.street ?? "- , - "), "
+          + "\(response.deliveryAddress.house ?? "")"
+
         let viewModel = MainModel.Item.ViewModel(
             options: options,
             banners: banners,
             promotions: promotions,
-            catalogue: catalogue
+            catalogue: catalogue,
+            deliveryAddress: presentedDeliveryAddress
         )
 
         viewController?.displayMain(viewModel)

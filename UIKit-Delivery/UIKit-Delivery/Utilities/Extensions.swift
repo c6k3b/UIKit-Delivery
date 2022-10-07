@@ -9,20 +9,6 @@ extension UIColor {
     }
 }
 
-extension UIViewController {
-    func showAlert(title: String, message: String, actionTitle: String) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        let action = UIAlertAction(title: actionTitle, style: .cancel)
-
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-}
-
 extension UITextView {
     func adjustableKeyboard() {
         let notificationCenter = NotificationCenter.default
@@ -61,9 +47,44 @@ extension UITextView {
     }
 }
 
-extension UILabel {
-    open override func draw(_ rect: CGRect) {
-        let inset = UIEdgeInsets(top: -2, left: 2, bottom: -2, right: 2)
-        super.draw(rect.inset(by: inset))
+extension CATransition {
+    func segueFromBottom() -> CATransition {
+        self.duration = 0.7
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromTop
+        return self
+    }
+
+    func segueFromTop() -> CATransition {
+        self.duration = 0.375
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromBottom
+        return self
+    }
+
+    func segueFromLeft() -> CATransition {
+        self.duration = 0.5
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.push
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
+    }
+
+    func popFromRight() -> CATransition {
+        self.duration = 0.1
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromRight
+        return self
+    }
+
+    func popFromLeft() -> CATransition {
+        self.duration = 0.1
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
     }
 }

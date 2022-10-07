@@ -10,7 +10,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
     private var promotions: [MainModel.Item.ViewModel.Promotion] = []
     private var catalogue: [MainModel.Item.ViewModel.CatalogueItem] = []
 
-    private var address: String = "Пискунова, 24"
     private var searchResults: [AddressCell] = []
 
     lazy var optionsCount = options.count
@@ -49,7 +48,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 
     lazy var addressButton: UIButton = {
         $0.setTitleColor(.label, for: .normal)
-        $0.setTitle(address + " ›", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
         return $0
@@ -75,11 +73,15 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         self.router = router
         super.init(nibName: nil, bundle: nil)
         UINavigationBar.appearance().tintColor = Styles.Colors.grey
-        showItems()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showItems()
     }
 
     func displayMain(_ viewModel: MainModel.Item.ViewModel) {
@@ -87,9 +89,10 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         banners = viewModel.banners
         promotions = viewModel.promotions
         catalogue = viewModel.catalogue
+        addressButton.setTitle(viewModel.deliveryAddress + " ›", for: .normal)
 
-        configureDataSource()
         setUp()
+        configureDataSource()
     }
 }
 
@@ -129,8 +132,6 @@ private extension MainViewController {
         let addressCellRegistration = UICollectionView.CellRegistration<AddressCell, Int> {
             [unowned self]  (cell, _, _) in
             cell.menuButton.addTarget(self, action: #selector(self.didMenuButtonTapped), for: .touchUpInside)
-
-            cell.addressButton.setTitle(address + " ›", for: .normal)
             cell.addressButton.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
         }
 

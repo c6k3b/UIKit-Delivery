@@ -24,18 +24,16 @@ final class MainInteractor: MainBusinessLogic, MainDataStore {
     func fetchMain(_ request: MainModel.Item.Request) {
         setMockData()
 
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             let response = MainModel.Item.Response(
-                options: self?.options ?? [],
-                banners: self?.banners ?? [],
-                promotions: self?.promotions ?? [],
-                catalogue: self?.catalogue ?? []
+                options: self.options ?? [],
+                banners: self.banners ?? [],
+                promotions: self.promotions ?? [],
+                catalogue: self.catalogue ?? [],
+                deliveryAddress: self.address
             )
-            self?.presenter.presentMain(response)
+            self.presenter.presentMain(response)
         }
-    }
-
-    func storeAddress() {
     }
 }
 

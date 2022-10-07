@@ -75,6 +75,7 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
         self.interactor = interactor
         self.router = router
         super.init(nibName: nil, bundle: nil)
+        setUp()
         showItems()
     }
 
@@ -85,7 +86,6 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
     func displayMenu(_ viewModel: MenuModel.Item.ViewModel) {
         menuOptions = viewModel.menuCells
         configure(with: viewModel.userInfo)
-        setUp()
     }
 
     func configure(with model: MenuModel.Item.ViewModel.User) {

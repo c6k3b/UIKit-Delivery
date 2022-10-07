@@ -11,20 +11,35 @@ final class MainRouter: MainRoutingLogic, MainDataPassing {
     func routeToMenu() {
         let destinationVC = MenuAssembly.build()
         if let viewController = viewController {
-            navigate(source: viewController, destination: destinationVC)
+            segueFromLeft(source: viewController, destination: destinationVC)
         }
     }
 
     func routeToSearch() {
         let destinationVC = SearchAssembly.build()
         if let viewController = viewController {
-            navigate(source: viewController, destination: destinationVC)
+            segueFromBottom(source: viewController, destination: destinationVC)
         }
     }
 }
 
 private extension MainRouter {
-    func navigate(source: UIViewController, destination: UIViewController) {
-        source.navigationController?.pushViewController(destination, animated: true)
+    func segueFromLeft(source: UIViewController, destination: UIViewController) {
+//        source.navigationController?.pushViewController(destination, animated: true)
+        let navigationController = source.navigationController
+        DispatchQueue.main.async {
+            navigationController?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
+//            navigationController?.view.frame.origin.x = -20
+            navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+
+    func segueFromBottom(source: UIViewController, destination: UIViewController) {
+//        source.navigationController?.present(destination, animated: true)
+        let navigationController = source.navigationController
+        DispatchQueue.main.async {
+            navigationController?.view.layer.add(CATransition().segueFromBottom(), forKey: nil)
+            navigationController?.pushViewController(destination, animated: false)
+        }
     }
 }
