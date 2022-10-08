@@ -8,7 +8,6 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     typealias AddressCell = SearchModel.Item.ViewModel.AddressListCell
 
     private var addressList: [AddressCell] = []
-    private var searchResults: [AddressCell] = []
 
     // MARK: - UI Elements
     private lazy var stack: UIStackView = {
@@ -16,20 +15,48 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         $0.spacing = 20
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = Styles.Colors.grey
+        $0.addArrangedSubview(searchTextField)
+        $0.addArrangedSubview(SeparatorView())
         $0.addArrangedSubview(currentLocationStack)
         $0.addArrangedSubview(table)
+        $0.setCustomSpacing(14, after: searchTextField)
+        $0.setCustomSpacing(24, after: currentLocationStack)
         return $0
     }(UIStackView())
 
-    private lazy var searchController: UISearchController = {
-        $0.searchBar.placeholder = "Поиск адреса"
-        $0.hidesNavigationBarDuringPresentation = false
-        $0.searchBar.sizeToFit()
-        $0.searchResultsUpdater = self
+    private lazy var searchTextField: UITextField = {
+        let leftContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+        let rightContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+        let leftImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let rightImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+
+        leftImage.image = Styles.Images.search
+        rightImage.image = Styles.Images.xmark
+        leftImage.center = leftContainer.center
+        rightImage.center = rightContainer.center
+
+        leftContainer.addSubview(leftImage)
+        rightContainer.addSubview(rightImage)
+
+        $0.placeholder = "Поиск адреса"
+        $0.leftView = leftContainer
+        $0.leftViewMode = .always
+        $0.rightView = rightContainer
+        $0.rightViewMode = .whileEditing
+        $0.delegate = self
+        $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return $0
-    }(UISearchController(searchResultsController: nil))
+    }(UITextField())
 
     private lazy var currentLocationStack: UIStackView = {
+        let locationImage = UIImageView(image: Styles.Images.location)
+        let locationLabel = UILabel()
+
+        locationImage.contentMode = .scaleAspectFit
+        locationLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        locationLabel.textAlignment = .left
+        locationLabel.text = "Текущее местоположение"
+
         $0.axis = .horizontal
         $0.spacing = 8
         $0.alignment = .center
@@ -39,20 +66,6 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         $0.addArrangedSubview(locationLabel)
         return $0
     }(UIStackView())
-
-    private let locationImage: UIImageView = {
-        $0.image = Styles.Images.location
-        $0.contentMode = .scaleAspectFit
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UIImageView())
-
-    private let locationLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        $0.textAlignment = .left
-        $0.text = "Текущее местоположение"
-        return $0
-    }(UILabel())
 
     private lazy var table: UITableView = {
         $0.showsVerticalScrollIndicator = false
@@ -69,7 +82,6 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         self.router = router
         super.init(nibName: nil, bundle: nil)
         setUp()
-        showItems()
     }
 
     required init?(coder: NSCoder) {
@@ -85,20 +97,20 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
 // MARK: - Private Methods
 private extension SearchViewController {
     func setUp() {
-        navigationItem.searchController = searchController
         view.backgroundColor = Styles.Colors.background
         view.addSubview(stack)
         activateConstraints()
     }
 
-    func showItems() {
-        interactor.requestAddressList(query: "ижевск ленина", request: SearchModel.Item.Request())
+    func showItems(query: String) {
+        interactor.requestAddressList(query: query, request: SearchModel.Item.Request())
     }
 
-    func updateSearchResults(for searchText: String) {
-        searchResults = addressList.filter { address in
-            let match = address.city.range(of: searchText, options: .caseInsensitive)
-            return match != nil
+    @objc func textFieldDidChange() {
+        if let text = searchTextField.text {
+            if text.count > 1 {
+                showItems(query: text)
+            }
         }
     }
 }
@@ -108,6 +120,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 64 }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         interactor.setAddress(indexPath.item)
         router.routeToMain()
     }
@@ -131,13 +144,11 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Search Delegate
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
-            updateSearchResults(for: searchText)
-            table.reloadData()
-        }
+// MARK: - TextField Delegate
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

@@ -3,7 +3,14 @@ import UIKit
 class MenuCell: UITableViewCell, MenuConfigurableCell {
     static var identifier: String { String(describing: MenuCell.self) }
 
+    private let label = UILabel()
+    private let subLabel = UILabel()
+
     private lazy var stack: UIStackView = {
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        subLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        subLabel.textColor = Styles.Colors.grey
+
         $0.axis = .vertical
         $0.alignment = .leading
         $0.spacing = 0
@@ -12,17 +19,6 @@ class MenuCell: UITableViewCell, MenuConfigurableCell {
         $0.addArrangedSubview(subLabel)
         return $0
     }(UIStackView())
-
-    private let label: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        return $0
-    }(UILabel())
-
-    private let subLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        $0.textColor = Styles.Colors.grey
-        return $0
-    }(UILabel())
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -13,16 +13,6 @@ enum Styles {
         static let yellow = UIColor(hex: 0xFFD334)
         static let cardBackground = UIColor(hex: 0xf4f4f4)
         static let orange = UIColor(hex: 0xFFA033)
-
-        static let card1 = UIColor(hex: 0xffc1b6)
-        static let card2 = UIColor(hex: 0xffe1ad)
-        static let card3 = UIColor(hex: 0xbab892)
-        static let card4 = UIColor(hex: 0xc4d3ce)
-        static let card5 = UIColor(hex: 0xb9c4c8)
-        static let card6 = UIColor(hex: 0xa3ae9d)
-        static let card7 = UIColor(hex: 0xffe6b6)
-        static let card8 = UIColor(hex: 0xd3c4c4)
-        static let card9 = UIColor(hex: 0xffd4ad)
     }
 
     enum Images {
@@ -30,10 +20,12 @@ enum Styles {
         static let favourites = UIImage(named: "favourites")
         static let location = UIImage(named: "location")
         static let menu = UIImage(named: "menu")
-        static let pin = UIImage(named: "pin")
-        static let user = UIImage(named: "user")
-        static let plus = UIImage(systemName: "plus")
         static let minus = UIImage(systemName: "minus")
+        static let pin = UIImage(named: "pin")
+        static let plus = UIImage(systemName: "plus")
+        static let search = UIImage(systemName: "magnifyingglass")
+        static let user = UIImage(named: "user")
+        static let xmark = UIImage(systemName: "xmark")
 
         static let banner1 = UIImage(named: "openingDiscount")
         static let banner2 = UIImage(named: "discount")

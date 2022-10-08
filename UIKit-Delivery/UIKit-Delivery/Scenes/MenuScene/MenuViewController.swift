@@ -8,6 +8,10 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
     private var menuOptions: [MenuModel.Item.ViewModel.MenuCell] = []
 
     // MARK: - UI Elements
+    private let userImage = UIImageView()
+    private let nameLabel = UILabel()
+    private let phoneLabel = UILabel()
+
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 20
@@ -19,37 +23,27 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
     }(UIStackView())
 
     private lazy var userStack: UIStackView = {
+        lazy var userInfoStack: UIStackView = {
+            nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+            phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+
+            $0.axis = .vertical
+            $0.spacing = -8
+            $0.distribution = .fillEqually
+            $0.addArrangedSubview(nameLabel)
+            $0.addArrangedSubview(phoneLabel)
+            return $0
+        }(UIStackView())
+
+        userImage.contentMode = .scaleAspectFill
+        userImage.translatesAutoresizingMaskIntoConstraints = false
+
         $0.axis = .horizontal
         $0.spacing = 30
         $0.addArrangedSubview(userImage)
         $0.addArrangedSubview(userInfoStack)
         return $0
     }(UIStackView())
-
-    private let userImage: UIImageView = {
-        $0.contentMode = .scaleAspectFill
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UIImageView())
-
-    private lazy var userInfoStack: UIStackView = {
-        $0.axis = .vertical
-        $0.spacing = -8
-        $0.distribution = .fillEqually
-        $0.addArrangedSubview(nameLabel)
-        $0.addArrangedSubview(phoneLabel)
-        return $0
-    }(UIStackView())
-
-    private let nameLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        return $0
-    }(UILabel())
-
-    private let phoneLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        return $0
-    }(UILabel())
 
     private lazy var table: UITableView = {
         $0.showsVerticalScrollIndicator = false
@@ -92,6 +86,7 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
         userImage.image = model.image
         nameLabel.text = model.name
         phoneLabel.text = model.phone
+        table.reloadData()
     }
 }
 
@@ -99,7 +94,6 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
 private extension MenuViewController {
     func setUp() {
         view.backgroundColor = Styles.Colors.background
-//        view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         view.addSubview(footerButton)
         activateConstraints()

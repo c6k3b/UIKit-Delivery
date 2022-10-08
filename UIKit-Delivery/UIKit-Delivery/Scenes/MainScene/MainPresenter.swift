@@ -54,7 +54,7 @@ final class MainPresenter: MainPresentationLogic {
         }
 
         let presentedDeliveryAddress =
-            "\(response.deliveryAddress.street ?? "- , - "), "
+            "\(response.deliveryAddress.street ?? "--------- ") "
           + "\(response.deliveryAddress.house ?? "")"
 
         let viewModel = MainModel.Item.ViewModel(

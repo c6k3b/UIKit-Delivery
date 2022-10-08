@@ -25,13 +25,7 @@ final class MainRouter: MainRoutingLogic, MainDataPassing {
 
 private extension MainRouter {
     func segueFromLeft(source: UIViewController, destination: UIViewController) {
-//        source.navigationController?.pushViewController(destination, animated: true)
-        let navigationController = source.navigationController
-        DispatchQueue.main.async {
-            navigationController?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
-//            navigationController?.view.frame.origin.x = -20
-            navigationController?.pushViewController(destination, animated: true)
-        }
+        source.navigationController?.pushViewController(destination, animated: true)
     }
 
     func segueFromBottom(source: UIViewController, destination: UIViewController) {

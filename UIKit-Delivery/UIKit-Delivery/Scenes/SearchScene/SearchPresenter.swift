@@ -8,14 +8,15 @@ final class SearchPresenter: SearchPresentationLogic {
     private var addressList: [Address] = []
 
     func presentAddress(_ response: SearchModel.Item.Response) {
+        addressList.removeAll()
         for address in response.addressList {
             let presentedAddress = Address(
                 street: "\(address.street ?? "") "
-                      + "\(address.streetType ?? "")., "
+                      + "\(address.streetType ?? "") "
                       + "\(address.house ?? "")",
-                city: "\(address.city ?? ""), "
+                city: "\(address.city ?? "") "
+                      + "\(address.region ?? "") "
                       + "\(address.regionType ?? "") "
-                      + "\(address.region ?? ""), "
                       + "\(address.country ?? "")"
             )
             addressList.append(presentedAddress)
