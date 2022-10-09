@@ -9,7 +9,7 @@ extension UIColor {
     }
 }
 
-extension UITextView {
+extension UITableView {
     func adjustableKeyboard() {
         let notificationCenter = NotificationCenter.default
 
@@ -43,7 +43,8 @@ extension UITextView {
         }
 
         scrollIndicatorInsets = contentInset
-        scrollRangeToVisible(selectedRange)
+//        scrollRangeToVisible(selectedRange)
+        scrollToNearestSelectedRow(at: .bottom, animated: true)
     }
 }
 

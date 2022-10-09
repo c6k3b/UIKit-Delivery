@@ -6,15 +6,17 @@ final class SearchWorker: SearchWorkerLogic {
 
         fetchData(query: query) {
             $0?.suggestions?.forEach {
-                store.append(Address(
-                    streetType: $0.data.streetType,
-                    street: $0.data.street,
-                    house: $0.data.house,
-                    city: $0.data.city,
-                    region: $0.data.region,
-                    regionType: $0.data.regionTypeFull,
-                    country: $0.data.country
-                ))
+                if $0.data.street != nil {
+                    store.append(Address(
+                        streetType: $0.data.streetType,
+                        street: $0.data.street,
+                        house: $0.data.house,
+                        city: $0.data.city,
+                        region: $0.data.region,
+                        regionType: $0.data.regionTypeFull,
+                        country: $0.data.country
+                    ))
+                }
             }
             completion(store)
         }

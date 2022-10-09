@@ -27,16 +27,22 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     private lazy var searchTextField: UITextField = {
         let leftContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
         let rightContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
-        let leftImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let rightImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
 
-        leftImage.image = Styles.Images.search
-        rightImage.image = Styles.Images.xmark
-        leftImage.center = leftContainer.center
-        rightImage.center = rightContainer.center
+        let leftImage: UIImageView = {
+            $0.image = Styles.Images.search
+            $0.center = leftContainer.center
+            return $0
+        }(UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)))
+
+        let clearButton: UIButton = {
+            $0.setImage(Styles.Images.xmark, for: .normal)
+            $0.center = rightContainer.center
+            $0.addTarget(self, action: #selector(clearInput), for: .touchUpInside)
+            return $0
+        }(UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 15)))
 
         leftContainer.addSubview(leftImage)
-        rightContainer.addSubview(rightImage)
+        rightContainer.addSubview(clearButton)
 
         $0.placeholder = "Поиск адреса"
         $0.leftView = leftContainer
@@ -49,13 +55,18 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
     }(UITextField())
 
     private lazy var currentLocationStack: UIStackView = {
-        let locationImage = UIImageView(image: Styles.Images.location)
-        let locationLabel = UILabel()
+        let locationImage: UIImageView = {
+            $0.contentMode = .scaleAspectFit
+            $0.image = Styles.Images.location
+            return $0
+        }(UIImageView())
 
-        locationImage.contentMode = .scaleAspectFit
-        locationLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        locationLabel.textAlignment = .left
-        locationLabel.text = "Текущее местоположение"
+        let locationLabel: UILabel = {
+            $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            $0.textAlignment = .left
+            $0.text = "Текущее местоположение"
+            return $0
+        }(UILabel())
 
         $0.axis = .horizontal
         $0.spacing = 8
@@ -71,6 +82,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
         $0.register(SearchViewCell.self, forCellReuseIdentifier: SearchViewCell.identifier)
+        $0.adjustableKeyboard()
         $0.delegate = self
         $0.dataSource = self
         return $0
@@ -112,6 +124,11 @@ private extension SearchViewController {
                 showItems(query: text)
             }
         }
+    }
+
+    @objc func clearInput() {
+        searchTextField.text?.removeAll()
+        showItems(query: "")
     }
 }
 

@@ -12,12 +12,12 @@ final class SearchPresenter: SearchPresentationLogic {
         for address in response.addressList {
             let presentedAddress = Address(
                 street: "\(address.street ?? "") "
-                      + "\(address.streetType ?? "") "
-                      + "\(address.house ?? "")",
-                city: "\(address.city ?? "") "
-                      + "\(address.region ?? "") "
-                      + "\(address.regionType ?? "") "
-                      + "\(address.country ?? "")"
+                    .appending("\(address.streetType ?? ""). ")
+                    .appending("\(address.house ?? "")"),
+                city: "\(address.city ?? ""), "
+                    .appending("\(address.region ?? "") ")
+                    .appending("\(address.regionType ?? ""), ")
+                    .appending("\(address.country ?? "")")
             )
             addressList.append(presentedAddress)
         }
