@@ -12,11 +12,11 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 
     private var searchResults: [AddressCell] = []
 
-    lazy var optionsCount = options.count
-
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
     // MARK: - UI Elements
+    private let addressButton = UIButton()
+
     private lazy var navigationLeftBarButton: UIBarButtonItem = {
         $0.image = Styles.Images.menu
         $0.target = self
@@ -24,42 +24,36 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         return $0
     }(UIBarButtonItem())
 
-    private lazy var titleView: UIView = {
-        $0.addSubview(deliveryStack)
-        return $0
-    }(UIView())
+    private lazy var navigationTitleView: UIStackView = {
+        let backSpacer = UIView()
+        let constraint = backSpacer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+        constraint.isActive = true
+        constraint.priority = .defaultLow
 
-    private lazy var deliveryStack: UIStackView = {
-        $0.axis = .vertical
-        $0.spacing = -4
-        $0.alignment = .leading
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.addArrangedSubview(label)
-        $0.addArrangedSubview(addressButton)
+        lazy var deliveryStack: UIStackView = {
+            let label: UILabel = {
+                $0.text = "Доставка"
+                $0.textColor = Styles.Colors.grey
+                $0.font = UIFont.systemFont(ofSize: 12)
+                return $0
+            }(UILabel())
+
+            addressButton.setTitleColor(.label, for: .normal)
+            addressButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            addressButton.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
+
+            $0.axis = .vertical
+            $0.spacing = -4
+            $0.addArrangedSubview(label)
+            $0.addArrangedSubview(addressButton)
+            return $0
+        }(UIStackView())
+
+        $0.axis = .horizontal
+        $0.addArrangedSubview(deliveryStack)
+        $0.addArrangedSubview(backSpacer)
         return $0
     }(UIStackView())
-
-    private let label: UILabel = {
-        $0.text = "Доставка"
-        $0.textColor = Styles.Colors.grey
-        $0.font = UIFont.systemFont(ofSize: 14)
-        return $0
-    }(UILabel())
-
-    lazy var addressButton: UIButton = {
-        $0.setTitleColor(.label, for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        $0.addTarget(self, action: #selector(self.didAddressButtonTapped), for: .touchUpInside)
-        return $0
-    }(UIButton())
-
-    private lazy var searchController: UISearchController = {
-        $0.searchBar.placeholder = "Поиск товаров"
-        $0.hidesNavigationBarDuringPresentation = false
-        $0.searchBar.sizeToFit()
-        $0.searchResultsUpdater = self
-        return $0
-    }(UISearchController(searchResultsController: nil))
 
     private lazy var collectionView: UICollectionView = {
         $0.showsVerticalScrollIndicator = false
@@ -100,8 +94,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 private extension MainViewController {
     func setUp() {
         navigationItem.leftBarButtonItem = navigationLeftBarButton
-        navigationItem.titleView = titleView
-//        navigationItem.searchController = searchController
+        navigationItem.titleView = navigationTitleView
 
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
@@ -222,12 +215,6 @@ private extension MainViewController {
             snapshot.appendItems(Array(itemOffset ..< itemUpperbound))
         }
         dataSource.apply(snapshot, animatingDifferences: false)
-    }
-}
-
-// MARK: - Search Delegate
-extension MainViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
     }
 }
 
