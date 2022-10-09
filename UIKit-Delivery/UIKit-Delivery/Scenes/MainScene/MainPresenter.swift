@@ -8,12 +8,12 @@ final class MainPresenter: MainPresentationLogic {
     typealias Promotion = MainModel.Item.ViewModel.Promotion
     typealias CatalogueItem = MainModel.Item.ViewModel.CatalogueItem
 
-    private var options: [Option] = []
-    private var banners: [Banner] = []
-    private var promotions: [Promotion] = []
-    private var catalogue: [CatalogueItem] = []
-
     func presentMain(_ response: MainModel.Item.Response) {
+        var options: [Option] = []
+        var banners: [Banner] = []
+        var promotions: [Promotion] = []
+        var catalogue: [CatalogueItem] = []
+
         for option in response.options {
             let presentedOption = Option(
                 image: UIImage(named: option.image ?? "") ?? UIImage(),

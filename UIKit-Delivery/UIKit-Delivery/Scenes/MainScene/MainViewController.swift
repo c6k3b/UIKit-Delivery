@@ -67,6 +67,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         self.router = router
         super.init(nibName: nil, bundle: nil)
         UINavigationBar.appearance().tintColor = Styles.Colors.grey
+        setUp()
     }
 
     required init?(coder: NSCoder) {
@@ -85,7 +86,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
         catalogue = viewModel.catalogue
         addressButton.setTitle(viewModel.deliveryAddress + " ›", for: .normal)
 
-        setUp()
         configureDataSource()
     }
 }

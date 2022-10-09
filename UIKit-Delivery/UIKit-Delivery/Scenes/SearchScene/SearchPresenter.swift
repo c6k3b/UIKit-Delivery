@@ -5,10 +5,9 @@ final class SearchPresenter: SearchPresentationLogic {
 
     typealias Address = SearchModel.Item.ViewModel.AddressListCell
 
-    private var addressList: [Address] = []
-
     func presentAddress(_ response: SearchModel.Item.Response) {
-        addressList.removeAll()
+        var addressList: [Address] = []
+
         for address in response.addressList {
             let presentedAddress = Address(
                 street: "\(address.street ?? "") "
