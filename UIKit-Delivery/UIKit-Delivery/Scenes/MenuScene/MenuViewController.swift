@@ -58,6 +58,7 @@ final class MenuViewController: UIViewController, MenuDisplayLogic, MenuConfigur
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentHorizontalAlignment = .left
         $0.titleLabel?.numberOfLines = 0
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         $0.setImage(Styles.Images.contacts, for: .normal)
         $0.setTitle(" Связаться\n с нами", for: .normal)
         $0.setTitleColor(Styles.Colors.grey, for: .normal)
