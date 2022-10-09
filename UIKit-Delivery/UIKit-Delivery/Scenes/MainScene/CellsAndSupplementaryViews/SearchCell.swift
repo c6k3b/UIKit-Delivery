@@ -6,16 +6,34 @@ class SearchCell: UICollectionViewCell {
         $0.spacing = 12
         $0.tintColor = Styles.Colors.grey
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.addArrangedSubview(searchField)
+        $0.addArrangedSubview(searchTextField)
         $0.addArrangedSubview(button)
         return $0
     }(UIStackView())
 
-    private let searchField: UISearchTextField = {
+    private lazy var searchTextField: UITextField = {
+        let leftContainer = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 35))
+        let rightContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+
+        let searchImage: UIImageView = {
+            $0.image = Styles.Images.search
+            $0.center = rightContainer.center
+            return $0
+        }(UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)))
+
+        rightContainer.addSubview(searchImage)
+
         $0.placeholder = "Поиск товаров"
-        $0.backgroundColor = Styles.Colors.background
+        $0.backgroundColor = Styles.Colors.cardBackground
+        $0.layer.cornerRadius = 5
+
+        $0.leftView = leftContainer
+        $0.leftViewMode = .always
+        $0.rightView = rightContainer
+        $0.rightViewMode = .unlessEditing
+        $0.clearButtonMode = .whileEditing
         return $0
-    }(UISearchTextField())
+    }(UITextField())
 
     private let button: UIButton = {
         $0.setImage(Styles.Images.favourites, for: .normal)
@@ -45,14 +63,11 @@ private extension SearchCell {
 
 private extension SearchCell {
     func activateConstraints() {
-        let buttonWidth = 35.0
-
-        if let superview = superview {
-            NSLayoutConstraint.activate([
-                searchField.widthAnchor.constraint(
-                    equalToConstant: superview.bounds.width - 16 - stack.spacing - buttonWidth
-                )
-            ])
-        }
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stack.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stack.rightAnchor.constraint(equalTo: contentView.rightAnchor)
+        ])
     }
 }

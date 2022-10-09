@@ -28,7 +28,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
         let leftContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
         let rightContainer = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
 
-        let leftImage: UIImageView = {
+        let searchImage: UIImageView = {
             $0.image = Styles.Images.search
             $0.center = leftContainer.center
             return $0
@@ -41,7 +41,7 @@ final class SearchViewController: UIViewController, SearchDisplayLogic {
             return $0
         }(UIButton(frame: CGRect(x: 0, y: 0, width: 15, height: 15)))
 
-        leftContainer.addSubview(leftImage)
+        leftContainer.addSubview(searchImage)
         rightContainer.addSubview(clearButton)
 
         $0.placeholder = "Поиск адреса"
