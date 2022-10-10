@@ -58,7 +58,7 @@ extension CATransition {
     }
 
     func segueFromTop() -> CATransition {
-        self.duration = 0.375
+        self.duration = 0.7
         self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         self.type = CATransitionType.moveIn
         self.subtype = CATransitionSubtype.fromBottom

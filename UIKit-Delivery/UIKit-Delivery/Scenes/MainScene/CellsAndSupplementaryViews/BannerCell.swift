@@ -1,6 +1,8 @@
 import UIKit
 
 class BannerCell: UICollectionViewCell, MainConfigurableBannerCell {
+    static var identifier: String { String(describing: BannerCell.self) }
+
     lazy var imageView: UIImageView = {
         $0.contentMode = .scaleAspectFill
         return $0

@@ -1,6 +1,8 @@
 import UIKit
 
 class CatalogueHeaderCell: UICollectionViewCell {
+    static var identifier: String { String(describing: CatalogueHeaderCell.self) }
+
     private let label: UILabel = {
         $0.text = "Каталог"
         $0.font = UIFont.systemFont(ofSize: 25)

@@ -1,6 +1,8 @@
 import UIKit
 
 class CatalogueCell: UICollectionViewCell, MainConfigurableCatalogueItemCell {
+    static var identifier: String { String(describing: CatalogueCell.self) }
+
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
         $0.alignment = .center

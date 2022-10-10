@@ -1,6 +1,8 @@
 import UIKit
 
 class AddressCell: UICollectionViewCell {
+    static var identifier: String { String(describing: AddressCell.self) }
+
     private lazy var stack: UIStackView = {
         $0.axis = .horizontal
         $0.alignment = .center
@@ -27,7 +29,7 @@ class AddressCell: UICollectionViewCell {
     private let label: UILabel = {
         $0.text = "Доставка"
         $0.textColor = Styles.Colors.grey
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont.systemFont(ofSize: 12)
         return $0
     }(UILabel())
 

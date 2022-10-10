@@ -1,6 +1,8 @@
 import UIKit
 
 class PromotionCell: UICollectionViewCell, MainConfigurablePromotionCell {
+    static var identifier: String { String(describing: PromotionCell.self) }
+
     private var isNew = false
 
     private lazy var stack: UIStackView = {

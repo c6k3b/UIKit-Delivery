@@ -1,6 +1,8 @@
 import UIKit
 
 class OptionCell: UICollectionViewCell, MainConfigurableOptionCell {
+    static var identifier: String { String(describing: OptionCell.self) }
+
     private lazy var stack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 6

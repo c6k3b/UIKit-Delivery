@@ -1,6 +1,8 @@
 import UIKit
 
 class SearchCell: UICollectionViewCell {
+    static var identifier: String { String(describing: SearchCell.self) }
+
     private lazy var stack: UIStackView = {
         $0.axis = .horizontal
         $0.spacing = 12
