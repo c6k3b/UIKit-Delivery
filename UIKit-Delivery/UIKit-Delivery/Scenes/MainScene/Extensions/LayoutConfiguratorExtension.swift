@@ -9,8 +9,9 @@ extension MainViewController {
 
         var columnCount: Int {
             switch self {
-            case .address, .search, .catalogueHeader: return 1
-            case .option, .banner, .promotion: return 4
+            case .address, .search, .catalogueHeader, .banner: return 1
+            case .option: return 5
+            case .promotion: return 4
             case .catalogue: return 3
             }
         }
@@ -36,24 +37,27 @@ extension MainViewController {
 
             // Group
             var groupHeight = NSCollectionLayoutDimension.absolute(40)
+            var groupWidth: NSCollectionLayoutDimension = .fractionalWidth(1.0)
+
             switch sectionLayoutKind {
             case .address: groupHeight = .absolute(0.01)
             case .search: groupHeight = groupHeight
             case .catalogueHeader: groupHeight = .estimated(30)
-            case .option: groupHeight = .estimated(100)
+            case .option: groupHeight = .estimated(88)
             case .banner: groupHeight = .estimated(115)
             case .promotion: groupHeight = .estimated(208)
             case .catalogue: groupHeight = .estimated(145)
             }
 
+            switch sectionLayoutKind {
+            case .banner: groupWidth = .estimated(290)
+            case .promotion: groupWidth = .estimated(CGFloat(SectionLayoutKind.promotion.columnCount) * 112)
+            case .option: groupWidth = .estimated(CGFloat(SectionLayoutKind.option.columnCount) * 84)
+            default: groupWidth = groupWidth
+            }
+
             let groupSize = NSCollectionLayoutSize(
-                widthDimension: sectionLayoutKind == .banner
-                    ? .estimated(1250)
-                    : sectionLayoutKind == .promotion
-                        ? .estimated(490)
-                        : sectionLayoutKind == .option
-                            ? .estimated(375)
-                            : .fractionalWidth(1),
+                widthDimension: groupWidth,
                 heightDimension: groupHeight
             )
 
